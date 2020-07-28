@@ -1,3 +1,6 @@
+<!-- Dashboard! If you signed in -->
+
+<% if signed_in? %>
 
 <!--vertical nav bar-->
 <div class="row">
@@ -33,12 +36,14 @@
       <!--home page-->
       <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
         <h2> Home Page -Dashboard </h2>
+        <p> Welcome, user <%= current_user.email %> </p>
         <%= button_to "Practice", practice_path, method: :get %>
       </div>
 
       <!--profile page-->
       <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
         <h2>Profile and User Info</h2>
+        email:  <%= current_user.email %>
       </div>
 
       <!--settings page-->
@@ -47,10 +52,10 @@
       </div>
 
       <!--Logut-->
-      <div class="tab-pane fade" id="v-pills-logout" role="tabpanel" aria-labelledby="v-pills-logout-tab">
-        <h2> Logged Out </h2>
+      <div class="tab-pane fade" id="v-pills-logout" role="tabpanel" aria-labelledby="v-pills-logout-tab" onclick="logOutClicked()">
+        <p>Are you sure you want to log out? </p>
+        <p><%= button_to "Yes, Log Out", sign_out_path, method: :delete %></p>
       </div>
-
 
     </div>
 
@@ -58,3 +63,10 @@
 
   </div>
 </div>
+
+
+<% else %>
+
+Generic Landing Page
+  <%= link_to "Sign in", sign_in_path %>
+<% end %>
