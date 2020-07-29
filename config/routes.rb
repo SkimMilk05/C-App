@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  #if signed_in?
-    root 'navigation#index' #setting root page as navigation
-  #else
-#    root 'general#index'
-#  end
 
-  get '/' => 'navigation#index', as: 'navigation'
-  get '/practice' => 'practice#index', as: 'practice'
+#when you're signed in
+  constraints Clearance::Constraints::SignedIn.new do
+    root to: 'navigation#index', as: :signed_in_root #root page is dashboard
+    get '/practice' => 'practice#index', as: 'practice'
+  end
+
+#when you're signed out
+  constraints Clearance::Constraints::SignedOut.new do
+    root to: 'general#index'
+  end
+
+
 
 
 end
