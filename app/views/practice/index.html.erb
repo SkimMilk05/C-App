@@ -1,10 +1,11 @@
 
 <!--Javascript-->
 <script type="text/javascript">
+  var correctSound = new Audio();
+  correctSound.src = "correct.mp3"
+
   function doGreen() {
     alert("You clicked green");
-    var path = "path to sound"
-    var correctSound = new Audio(path);
     correctSound.play();
   }
 
