@@ -1,8 +1,14 @@
+<audio class="audios" id="yes-audio" controls preload="none">
+   <source src="audios/cheers.mp3" type="audio/mpeg">
+</audio>
+
+<audio class="audios" id="no-audio" controls preload="none">
+   <source src="audios/boo.mp3" type="audio/mpeg">
+</audio>
 
 <!--Javascript-->
 <script type="text/javascript">
-  var correctSound = new Audio();
-  correctSound.src = "correct.mp3"
+  var correctSound = new Audio('/assets/correct.mp3');
 
   function doGreen() {
     alert("You clicked green");
