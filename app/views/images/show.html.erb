@@ -1,9 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<div style="width:400px"; height:auto">
-<%= image_tag(@image.diagram, :usemap => "#NavMap") %>
-</div>
+<script>
+function greenClicked() {
+  alert("You clicked green!");
+}
+function blueClicked() {
+  alert("You clicked blue!");
+}
+</script>
 
 
-<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= image_tag(@image.diagram, usemap: "#map") %>
+
+
+<map name="map">
+  <area shape="circle" coords="<%= @image.green_coordinates %>" alt="green area" href="greenClicked()">
+  <%# end %>
+
+  <area shape="circle" coords="<%= @image.blue_coordinates %>" alt="blue area" href="blueClicked()">
+  <%#end%>
+
+</map>
+
+
+
+<%= link_to 'Edit', edit_image_path(@image) %>
 <%= link_to 'Back', images_path %>
