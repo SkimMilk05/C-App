@@ -28,30 +28,12 @@
   <div class="carousel-inner">
 
     <!-- each element of the slideshow -->
+
+    <% @images.each do |image| %>
     <div class="carousel-item active">
-      <img src="https://i.pinimg.com/564x/50/97/5d/50975d517c310eee8c6a7c568e477774.jpg" usemap="#image-map">
-
-      <map name="image-map">
-          <area class="greenArea" onclick="doGreen()" target="" alt="Green" title="Green" href="" coords="33,119,34" shape="circle">
-          <area class="greenArea" onclick="doGreen()" target="" alt="Green" title="Green" href="" coords="185,267,37" shape="circle">
-          <area class="greenArea" onclick="doGreen()" target="" alt="Green" title="Green" href="" coords="183,119,34" shape="circle">
-          <area class="greenArea" onclick="doGreen()" target="" alt="Green" title="Green" href="" coords="34,268,35" shape="circle">
-          <area class="blueArea" onclick="doBlue()" target="" alt="Blue" title="Blue" href="" coords="115,184,36" shape="circle">
-          <area class="blueArea" onclick="doBlue()" target="" alt="Blue" title="Blue" href="" coords="267,186,38" shape="circle">
-          <area class="blueArea" onclick="doBlue()"  target="" alt="Blue" title="Blue" href="" coords="116,35,38" shape="circle">
-          <area class="blueArea" onclick="doBlue()" target="" alt="Blue" title="Blue" href="" coords="267,35,37" shape="circle">
-      </map>
+      <%= image_tag(image.diagram, style: 'width:100%') %>
     </div>
-
-
-
-    <div class="carousel-item">
-      <img class="d-block w-100" src="https://images-na.ssl-images-amazon.com/images/I/51mcJ4dSIPL._AC_SX425_.jpg" alt="Second slide">
-    </div>
-
-    <div class="carousel-item">
-      <img class="d-block w-100" src="https://previews.123rf.com/images/kebox/kebox1702/kebox170200165/72692381-polka-dot-background-card-white-blue-green.jpg" alt="Third slide">
-    </div>
+    <%end%>
 
   </div>
 
