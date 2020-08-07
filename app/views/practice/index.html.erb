@@ -1,43 +1,12 @@
-<audio class="audios" id="yes-audio" controls preload="none">
-   <source src="audios/cheers.mp3" type="audio/mpeg">
-</audio>
 
-<audio class="audios" id="no-audio" controls preload="none">
-   <source src="audios/boo.mp3" type="audio/mpeg">
-</audio>
-
-<!--Javascript-->
-<script type="text/javascript">
-  var correctSound = new Audio('/assets/correct.mp3');
-
-  function doGreen() {
-    alert("You clicked green");
-    correctSound.play();
-  }
-
-  function doBlue() {
-    alert("You clicked blue");
-  }
-</script>
-
-
-<%= button_to "Exit Practice", signed_in_root_path, method: :get %>
-
-<!-- slideshow -->
-<div id="carouselExampleControls" class="carousel slide" data-interval="false" data-wrap="false">
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
-
-    <!-- each element of the slideshow -->
-
-    <% @images.each do |image| %>
-    <div class="carousel-item active">
-      <%= image_tag(image.diagram, style: 'width:100%') %>
-    </div>
-    <%end%>
-
+    <% @images.shuffle.each do |image| %>
+      <div class="carousel-item">
+      <%= image_tag(image.diagram, class: "d-block w-100") %>
+      </div>
+      <% end %>
   </div>
-
-  <!--controls -->
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
