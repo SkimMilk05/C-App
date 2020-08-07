@@ -14,10 +14,10 @@ function blueClicked() {
 
 
 <map name="map">
-  <area shape="circle" coords="<%= @image.green_coordinates %>" alt="green area" href="greenClicked()">
+  <area shape="circle" coords="<%= @image.green_coordinates %>" alt="green area" onclick="greenClicked()">
   <%# end %>
 
-  <area shape="circle" coords="<%= @image.blue_coordinates %>" alt="blue area" href="blueClicked()">
+  <area shape="circle" coords="<%= @image.blue_coordinates %>" alt="blue area" onclick="blueClicked()">
   <%#end%>
 
 </map>

@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Images</h1>
+<h1>Practice Session Menu</h1>
+<p> click on image to select </p>
 
 <table>
   <thead>
@@ -12,7 +13,7 @@
   <tbody>
     <% @images.shuffle.each do |image| %>
         <tr>
-            <%= link_to image_tag(image.diagram, style: 'width:50%'), image%>
+            <%= link_to image_tag(image.diagram, style: 'width:10%'), image%>
             <%= link_to 'Edit', edit_image_path(image) %>
             <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %>
         </tr>
