@@ -7,7 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+
+
+
 ################imageset A
+imageSetA
+
 imageA1 = Image.create(img_url: 'https://content.mycutegraphics.com/backgrounds/polkadot/dotbg79.gif')
 GreenArea.create(coordinates: '78,76,74', image: imageA1)
 GreenArea.create(coordinates: '242,245,71', image: imageA1)
