@@ -10,7 +10,7 @@
   </thead>
 
   <tbody>
-    <% @image_sets.shuffle.each do |image_set| %>
+    <% @image_sets.shuffle.each do |image_set| %> <!-- shuffle function randomizes order -->
 
         <!-- display the first image of the image-set-->
         <%= image_tag(image_set.images.first().img_url, style: 'width:50%') %>
@@ -18,7 +18,7 @@
 
     <% end %>
 
-  <br/>  
+  <br/>
   <%= link_to 'Back', root_path %>
   </tbody>
 </table>
