@@ -1,12 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <script>
+//can't use erb within script
+
+var greenAreaClicked = false; //global variable
+
+var numWrong = 0; //global variable
+var areasLeft = 2; //global variable
 
 function greenClicked() {
+  greenAreaClicked = true;
+  areasLeft--;
   alert("You clicked green!");
 }
 function blueClicked() {
+  if (greenAreaClicked == false) {
+    numWrong++
+    alert("Don't click blue yet!");
+  } else {
+  areasLeft--;
   alert("You clicked blue!");
+  }
+}
+
+function showScore() {
+  alert("Number of times you clicked wrong: " + numWrong + "\n" +
+  "Number of areas remaining: " + areasLeft
+  );
+
 }
 
 //function to scale image-map
@@ -15,22 +36,22 @@ function blueClicked() {
 
 </script>
 
-
-<%= image_tag(@image.diagram, usemap: "#map") %>
+<%= image_tag(@image.img_url, usemap: "#map")%>
 
 
 <map name="map">
-  <area shape="circle" coords="<%= @image.green_coordinates %>" alt="green area" onclick="greenClicked()">
-  <%# end %>
+  <% @image.green_areas.each do |green_area| %>
+  <area shape="circle" coords="<%= green_area.coordinates%>" alt="green area" onclick="greenClicked()">
+  <% end %>
 
-  <area shape="circle" coords="<%= @image.blue_coordinates %>" alt="blue area" onclick="blueClicked()">
-  <%#end%>
+  <% @image.blue_areas.each do |blue_area| %>
+  <area shape="circle" coords="<%= blue_area.coordinates %>" alt="blue area" onclick="blueClicked()">
+  <% end %>
 
 </map>
 
+<button type="button" name="button" onclick="showScore()">Submit</button>
 
-
-<%= link_to 'Edit', edit_image_path(@image) %>
 <%= link_to 'Back', images_path %>
 
 <script type="text/javascript">

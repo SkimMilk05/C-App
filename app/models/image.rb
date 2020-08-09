@@ -1,5 +1,6 @@
 class Image < ApplicationRecord
-  has_one_attached :diagram
-  serialize :greenCoord
-  serialize :blueCoord
+  has_many :image_sessions
+  has_many :green_areas
+  has_many :blue_areas
+
 end

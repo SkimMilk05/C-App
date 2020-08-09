@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<% @image_session.images.each do |image| %>
+<% end %>
+
+<%= link_to 'Edit', edit_image_session_path(@image_session) %> |
+<%= link_to 'Back', image_sessions_path %>

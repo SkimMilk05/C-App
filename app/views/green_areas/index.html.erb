@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Green Areas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @green_areas.each do |green_area| %>
+      <tr>
+        <td><%= link_to 'Show', green_area %></td>
+        <td><%= link_to 'Edit', edit_green_area_path(green_area) %></td>
+        <td><%= link_to 'Destroy', green_area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Green Area', new_green_area_path %>

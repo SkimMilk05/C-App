@@ -13,9 +13,8 @@
   <tbody>
     <% @images.shuffle.each do |image| %>
         <tr>
-            <%= link_to image_tag(image.diagram, style: 'width:10%'), image%>
-            <%= link_to 'Edit', edit_image_path(image) %>
-            <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= image_tag(image.img_url, style: 'width:50%')%>
+            <%= link_to 'Select', image %>
         </tr>
     <% end %>
   </tbody>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_07_194846) do
+ActiveRecord::Schema.define(version: 2020_08_09_034035) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,9 +33,37 @@ ActiveRecord::Schema.define(version: 2020_08_07_194846) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "blue_areas", force: :cascade do |t|
+    t.string "coordinates"
+    t.integer "image_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["image_id"], name: "index_blue_areas_on_image_id"
+  end
+
+  create_table "green_areas", force: :cascade do |t|
+    t.string "coordinates"
+    t.integer "image_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["image_id"], name: "index_green_areas_on_image_id"
+  end
+
+  create_table "image_sessions", force: :cascade do |t|
+    t.float "score"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.time "total_time"
+    t.integer "user_id"
+    t.integer "image_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["image_id"], name: "index_image_sessions_on_image_id"
+    t.index ["user_id"], name: "index_image_sessions_on_user_id"
+  end
+
   create_table "images", force: :cascade do |t|
-    t.string "green_coordinates"
-    t.string "blue_coordinates"
+    t.string "img_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

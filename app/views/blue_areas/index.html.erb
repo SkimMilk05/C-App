@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Blue Areas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blue_areas.each do |blue_area| %>
+      <tr>
+        <td><%= link_to 'Show', blue_area %></td>
+        <td><%= link_to 'Edit', edit_blue_area_path(blue_area) %></td>
+        <td><%= link_to 'Destroy', blue_area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Blue Area', new_blue_area_path %>

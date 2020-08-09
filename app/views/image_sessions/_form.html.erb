@@ -1,0 +1,36 @@
+<%= form_with(model: image_session, local: true) do |form| %>
+  <% if image_session.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(image_session.errors.count, "error") %> prohibited this image_session from being saved:</h2>
+
+      <ul>
+        <% image_session.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="start_time-field">
+    <%= form.label :start_time %>
+    <%= form.time_field :start_time %>
+  </div>
+
+  <div class="end_time-field">
+    <%= form.label :end_time %>
+    <%= form.time_field :start_time %>
+    end
+  </div>
+
+  <div class="images-field">
+    
+  </div>
+
+  <<div class="total_time-field">
+    total
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
