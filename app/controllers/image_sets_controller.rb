@@ -1,5 +1,6 @@
 class ImageSetsController < ApplicationController
-  before_action :set_image_set, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
+  before_action :set_image_set, only: [:show]
 
   # GET /image_sets
   # GET /image_sets.json

@@ -36,13 +36,15 @@
       <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
         <h2> Home Page -Dashboard </h2>
         <p> Welcome, <%= current_user.first_name %>! </p>
-        <%= button_to "Practice", practice_path, method: :get %>
+        <%= button_to "Practice", image_sets_path, method: :get %>
       </div>
 
       <!--profile page-->
       <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
         <h2>Profile and User Info</h2>
         Profile: <%= current_user.first_name + " " + current_user.last_name %>
+        <br/>
+        School: <%= current_user.school %>
 
       </div>
 

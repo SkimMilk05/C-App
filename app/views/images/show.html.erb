@@ -44,15 +44,17 @@ function showScore() {
   <area shape="circle" coords="<%= green_area.coordinates%>" alt="green area" onclick="greenClicked()">
   <% end %>
 
+
   <% @image.blue_areas.each do |blue_area| %>
   <area shape="circle" coords="<%= blue_area.coordinates %>" alt="blue area" onclick="blueClicked()">
   <% end %>
+
 
 </map>
 
 <button type="button" name="button" onclick="showScore()">Submit</button>
 
-<%= link_to 'Back', images_path %>
+<%= link_to 'Back', image_sets_path %>
 
 <script type="text/javascript">
   imageMapResize(); //rescale image-map

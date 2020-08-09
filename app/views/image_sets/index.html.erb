@@ -12,7 +12,8 @@
   <tbody>
     <% @image_sets.each do |image_set| %>
       <tr>
-        <%= image_tag(image_set.images.first().img_url, style: 'width:50%')%>
+        <!-- display the first image of the image-set-->
+        <%= image_tag(image_set.images.first().img_url, style: 'width:50%') %>
         <%= link_to 'Select', image_set %>
       </tr>
     <% end %>

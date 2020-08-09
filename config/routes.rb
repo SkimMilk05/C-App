@@ -39,7 +39,6 @@ Rails.application.routes.draw do
   #when you're signed in
   constraints Clearance::Constraints::SignedIn.new do
     root to: 'navigation#index', as: :signed_in_root #root page is dashboard
-    get '/practice' => 'practice#index', as: 'practice'
   end
 
   #when you're signed out
