@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Practice Session Menu</h1>
+<h1>This page will be deleted</h1>
 <p> click on image to select </p>
 
 <table>
@@ -12,7 +12,7 @@
 
   <tbody>
     <% @images.shuffle.each do |image| %>
-        <tr>
+        <tr> 
             <%= image_tag(image.img_url, style: 'width:50%')%>
             <%= link_to 'Select', image %>
         </tr>

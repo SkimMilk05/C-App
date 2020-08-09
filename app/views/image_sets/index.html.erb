@@ -12,14 +12,9 @@
   <tbody>
     <% @image_sets.each do |image_set| %>
       <tr>
-        <td><%= link_to 'Show', image_set %></td>
-        <td><%= link_to 'Edit', edit_image_set_path(image_set) %></td>
-        <td><%= link_to 'Destroy', image_set, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%= image_tag(image_set.images.first().img_url, style: 'width:50%')%>
+        <%= link_to 'Select', image_set %>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Image Set', new_image_set_path %>

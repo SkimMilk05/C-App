@@ -1,4 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_image_set_path(@image_set) %> |
+<h2>These are the images in the image-set</h2>
+
+<% @image_set.images.each do |image| %>
+    <tr>
+        <%= image_tag(image.img_url, style: 'width:50%')%>
+        <%= link_to 'Select', image %>
+    </tr>
+<% end %>
+
+<br/>
 <%= link_to 'Back', image_sets_path %>
