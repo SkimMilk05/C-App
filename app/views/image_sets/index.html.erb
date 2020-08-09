@@ -10,7 +10,7 @@
   </thead>
 
   <tbody>
-    <% @image_sets.each do |image_set| %>
+    <% @image_sets.shuffle.each do |image_set| %>
       <tr>
         <!-- display the first image of the image-set-->
         <%= image_tag(image_set.images.first().img_url, style: 'width:50%') %>
