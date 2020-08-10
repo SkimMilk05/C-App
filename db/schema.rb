@@ -50,10 +50,11 @@ ActiveRecord::Schema.define(version: 2020_08_09_045327) do
   end
 
   create_table "image_sessions", force: :cascade do |t|
-    t.float "score"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.time "total_time"
+    t.integer "greenAreasClickedRight"
+    t.integer "blueAreasClickedRight"
+    t.integer "greenAreasClickedWrong"
+    t.integer "blueAreasClickedWrong"
+    t.integer "colorlessAreasClicked"
     t.integer "user_id"
     t.integer "image_id"
     t.datetime "created_at", precision: 6, null: false
