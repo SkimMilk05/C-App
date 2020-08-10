@@ -1,33 +1,63 @@
 <p id="notice"><%= notice %></p>
 
 <script>
+
 //can't use erb within script
 
-var greenAreaClicked = false; //global variable
+var numGreenAreas = <%= @image.green_areas.length() %>; //global variable
+var numBlueAreas = <%= @image.blue_areas.length() %>;
 
-var numWrong = 0; //global variable
-var areasLeft = 2; //global variable
+var greenAreasLeft = numGreenAreas;
+var blueAreasLeft = numBlueAreas;
+
+//statistics
+
+//right answers
+var blueAreasClickedRight = 0;
+var greenAreasClickedRight = 0;
+
+//wrong answeres
+var blueAreasClickedWrong = 0;
+var greenAreasClickedWrong = 0;
+var colorlessAreasClicked = 0;
+
+
 
 function greenClicked() {
-  greenAreaClicked = true;
-  areasLeft--;
+  if (greenAreasLeft > 0) {
+  greenAreasClickedRight++;
+  greenAreasLeft--;
   alert("You clicked green!");
+} else {
+  greenAreasClickedWrong++;
+  alert("Wrong!");
+  }
 }
 function blueClicked() {
-  if (greenAreaClicked == false) {
-    numWrong++
-    alert("Don't click blue yet!");
+  if (greenAreasLeft == 0 && blueAreasLeft > 0) {
+    blueAreasClickedRight++;
+    blueAreasLeft--;
+    alert("You clicked blue!");
   } else {
-  areasLeft--;
-  alert("You clicked blue!");
+    blueAreasClickedWrong++;
+    alert("Wrong!");
   }
 }
 
-function showScore() {
-  alert("Number of times you clicked wrong: " + numWrong + "\n" +
-  "Number of areas remaining: " + areasLeft
-  );
+function colorlessClicked() {
+  colorlessAreasClicked++;
+  alert("Wrong!");
+}
 
+function showScore() {
+  alert("Number of green areas: " + numGreenAreas + "\n" +
+  "Number of green areas remaining: " + greenAreasLeft + "\n" +
+  "Green Areas Clicked right: " + greenAreasClickedRight + "\n" +
+  "Blue Areas Clicked right: " + blueAreasClickedRight + "\n" +
+  "Green Areas Clicked wrong: " + greenAreasClickedWrong + "\n" +
+  "Blue Areas Clicked wrong: " + blueAreasClickedWrong + "\n" +
+  "Colorless Areas Clicked (always wrong): " + colorlessAreasClicked
+  );
 }
 
 //function to scale image-map
@@ -36,7 +66,7 @@ function showScore() {
 
 </script>
 
-<%= image_tag(@image.img_url, usemap: "#map")%>
+<%= image_tag(@image.img_url, usemap: "#map", onclick: "colorlessClicked()")%>
 
 
 <map name="map">
