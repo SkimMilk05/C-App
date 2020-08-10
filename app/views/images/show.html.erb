@@ -1,9 +1,12 @@
+<h1>Image</h1>
+
 <p id="notice"><%= notice %></p>
 
 <script>
 
 var correctSound = new Audio("<%= audio_path 'Correct.mp3' %>");
 var wrongSound = new Audio("<%= audio_path 'Wrong.mp3' %>");
+var okaySound = new Audio("<%= audio_path 'Okay.mp3' %>")
 
 //can't use erb within script
 
@@ -46,8 +49,8 @@ function blueClicked() {
     alert("You clicked blue!");
   } else {
     blueAreasClickedWrong++;
-    wrongSound.play();
-    alert("Wrong!");
+    okaySound.play();
+    alert("Not yet!");
   }
 }
 
