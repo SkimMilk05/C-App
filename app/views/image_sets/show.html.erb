@@ -2,12 +2,33 @@
 
 <h2>These are the images in the image-set</h2>
 
-<% @image_set.images.each do |image| %>
-    <tr>
-        <%= image_tag(image.img_url, style: 'width:50%')%>
-        <%= link_to 'Select', image %>
-    </tr>
-<% end %>
+<div id="carousel" class="carousel slide" data-ride="false" data-interval="false" data-wrap="false">
+  <div class="carousel-inner">
+    <% @images = @image_set.images %>
+    <% @images.each do |image| %>  <!-- shuffle function randomizes order -->
+    <!-- first item must be active-->
+    <% if image == @images.first() %>
+      <div class="carousel-item active">
+        <%= image_tag(image.img_url, class: 'd-block w-100') %>
+      </div>
+    <%else%>
+      <div class="carousel-item">
+        <%= image_tag(image.img_url, class: 'd-block w-100') %>
+      </div>
+    <% end %> <!--end conditionals -->
+    <% end %> <!-- end loop-->
+  </div>
+
+  <!--controls-->
+  <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
 <br/>
 <%= link_to 'Back', image_sets_path %>
