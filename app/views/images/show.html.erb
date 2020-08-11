@@ -27,8 +27,7 @@ var blueAreasClickedWrong = 0;
 var greenAreasClickedWrong = 0;
 var colorlessAreasClicked = 0;
 
-
-
+//function to respond to clicks
 function greenClicked() {
   if (greenAreasLeft > 0) {
   greenAreasClickedRight++;
@@ -60,6 +59,7 @@ function colorlessClicked() {
   alert("Wrong!");
 }
 
+//checking for score. This will be overview page later
 function showScore() {
   alert("Number of green areas: " + numGreenAreas + "\n" +
   "Number of green areas remaining: " + greenAreasLeft + "\n" +
@@ -76,24 +76,22 @@ function showScore() {
 
 </script>
 
+<!--displayin the image -->
 <%= image_tag(@image.img_url, usemap: "#map", onclick: "colorlessClicked()")%>
 
-
+<!-- map for image -->
 <map name="map">
   <% @image.green_areas.each do |green_area| %>
   <div>
   <area shape="circle" coords="<%= green_area.coordinates%>" alt="green area" onclick="greenClicked()">
   <% end %>
 
-
   <% @image.blue_areas.each do |blue_area| %>
   <area shape="circle" coords="<%= blue_area.coordinates %>" alt="blue area" onclick="blueClicked()">
   <% end %>
-
-
 </map>
 
-
+<!--button to record score and move on -->
 <button type="button" name="button" onclick="showScore()">Submit</button>
 
 <%= link_to 'Back', image_sets_path %>
