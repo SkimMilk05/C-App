@@ -9,15 +9,13 @@
     <!-- first item must be active-->
     <% if image_set == @shuffled.first() %>
       <div class="carousel-item active">
-        <%= image_tag(image_set.images.first().img_url, class: 'd-block w-100') %>
-      </div>
     <%else%>
       <div class="carousel-item">
+    <%end%> <!--end conditionals -->
         <%= image_tag(image_set.images.first().img_url, class: 'd-block w-100') %>
-      </div>
-    <% end %> <!--end conditionals -->
+    </div>
     <% end %> <!-- end loop-->
-  </div>
+    </div>
 
   <!--controls-->
   <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">

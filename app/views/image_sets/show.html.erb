@@ -7,16 +7,14 @@
     <% @images = @image_set.images %>
     <% @images.each do |image| %>  <!-- shuffle function randomizes order -->
     <!-- first item must be active-->
-    <% if image == @images.first() %>
-      <div class="carousel-item active">
+      <% if image == @images.first() %>
+        <div class="carousel-item active">
+      <%else %>
+        <div class="carousel-item">
+      <% end %><!--end conditionals -->
         <%= image_tag(image.img_url, class: 'd-block w-100') %>
-      </div>
-    <%else%>
-      <div class="carousel-item">
-        <%= image_tag(image.img_url, class: 'd-block w-100') %>
-      </div>
-    <% end %> <!--end conditionals -->
-    <% end %> <!-- end loop-->
+        </div>
+      <% end %> <!-- end loop-->
   </div>
 
   <!--controls-->
