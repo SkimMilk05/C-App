@@ -2,7 +2,10 @@
 
 <p id="notice"><%= notice %></p>
 
-<% @image_set.images.each do |image| %>
+
+<h1>Image</h1>
+
+<p id="notice"><%= notice %></p>
 
 <script>
 
@@ -12,8 +15,8 @@ var okaySound = new Audio("<%= audio_path 'Okay.mp3' %>")
 
 //can't use erb within script
 
-var numGreenAreas = <%= image.green_areas.length() %>; //global variable
-var numBlueAreas = <%= image.blue_areas.length() %>;
+var numGreenAreas = <%= @image.green_areas.length() %>; //global variable
+var numBlueAreas = <%= @image.blue_areas.length() %>;
 
 var greenAreasLeft = numGreenAreas;
 var blueAreasLeft = numBlueAreas;
@@ -30,28 +33,34 @@ var greenAreasClickedWrong = 0;
 var colorlessAreasClicked = 0;
 
 //function to respond to clicks
+
 function greenClicked() {
   if (greenAreasLeft > 0) {
   greenAreasClickedRight++;
   greenAreasLeft--;
   correctSound.play();
   alert("You clicked green!");
+  $('#image').addClass('right');
 } else {
   greenAreasClickedWrong++;
   wrongSound.play();
   alert("Wrong!");
+  $('#image').addClass('wrong');
   }
 }
+
 function blueClicked() {
   if (greenAreasLeft == 0 && blueAreasLeft > 0) {
     blueAreasClickedRight++;
     blueAreasLeft--;
     correctSound.play();
     alert("You clicked blue!");
+    $('#image').addClass('right');
   } else {
     blueAreasClickedWrong++;
     okaySound.play();
     alert("Not yet!");
+    $('#image').addClass('okay');
   }
 }
 
@@ -59,6 +68,7 @@ function colorlessClicked() {
   colorlessAreasClicked++;
   wrongSound.play();
   alert("Wrong!");
+  $('#image').addClass('wrong');
 }
 
 //checking for score. This will be overview page later
@@ -79,27 +89,32 @@ function showScore() {
 </script>
 
 <!--displayin the image -->
-<%= image_tag(image.img_url, usemap: "#map", onclick: "colorlessClicked()")%>
+<%= image_tag(image.img_url, usemap: "#map", id: "image", onclick: "colorlessClicked()")%>
 
 <!-- map for image -->
 <map name="map">
-  <% image.green_areas.each do |green_area| %>
+  <% @image.green_areas.each do |green_area| %>
   <div>
   <area shape="circle" coords="<%= green_area.coordinates%>" alt="green area" onclick="greenClicked()">
   <% end %>
 
-  <% image.blue_areas.each do |blue_area| %>
+  <% @image.blue_areas.each do |blue_area| %>
   <area shape="circle" coords="<%= blue_area.coordinates %>" alt="blue area" onclick="blueClicked()">
   <% end %>
 </map>
 
 <!--button to record score and move on -->
 <button type="button" name="button" onclick="showScore()">Submit</button>
-<% end %>
+
+
+<%= @current_image_index = @images.find_index(@image) %>/3
+<%= @next_image = @images[@current_image_index + 1] %>
+
+<%= link_to 'Next', @next_image %>
+
+
+<%= link_to 'Back', image_sets_path %>
 
 <script type="text/javascript">
   imageMapResize(); //rescale image-map
 </script>
-
-
-<%= link_to 'Back', image_sets_path %>

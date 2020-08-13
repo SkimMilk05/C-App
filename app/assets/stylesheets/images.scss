@@ -5,5 +5,86 @@
 //this makes images responsive
 img {
   width: auto;
-  max-width: 100%;
+  max-width: 50%;
+}
+
+@-webkit-keyframes green {
+    0% {
+        background-color: Yellow;
+        opacity:1;
+    }
+    22% {
+        background-color: Yellow;
+    }
+    77% {
+        background-color: Yellow;
+    }
+    100% {
+        background-color: #FFFFFF;
+    }
+}
+
+@-webkit-keyframes yellow {
+    0% {
+        background-color: Yellow;
+        opacity:1;
+    }
+    22% {
+        background-color: Yellow;
+    }
+    77% {
+        background-color: Yellow;
+    }
+    100% {
+        background-color: #FFFFFF;
+    }
+}
+
+@-webkit-keyframes red {
+    0% {
+        background-color: Yellow;
+        opacity:1;
+    }
+    22% {
+        background-color: Yellow;
+    }
+    77% {
+        background-color: Yellow;
+    }
+    100% {
+        background-color: #FFFFFF;
+    }
+}
+
+.right{
+  -webkit-animation-name: green;
+    -webkit-animation-duration: 500ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+  -moz-animation-name: green;
+    -moz-animation-duration: 500ms;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: linear;
+}
+
+.okay{
+  -webkit-animation-name: yellow;
+    -webkit-animation-duration: 500ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+  -moz-animation-name: demo;
+    -moz-animation-duration: yellow;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: linear;
+}
+
+.wrong{
+  -webkit-animation-name: red;
+    -webkit-animation-duration: 500ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+  -moz-animation-name: red;
+    -moz-animation-duration: 500ms;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: linear;
 }
