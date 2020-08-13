@@ -2,9 +2,10 @@
 
 <h2>These are the images in the image-set</h2>
 
+<% @images = @image_set.images %>
+
 <div id="carousel" class="carousel slide" data-ride="false" data-interval="false" data-wrap="false">
   <div class="carousel-inner">
-    <% @images = @image_set.images %>
     <% @images.each do |image| %>  <!-- shuffle function randomizes order -->
     <!-- first item must be active-->
       <% if image == @images.first() %>
@@ -12,7 +13,7 @@
       <%else %>
         <div class="carousel-item">
       <% end %><!--end conditionals -->
-        <%= image_tag(image.img_url, class: 'd-block w-100') %>
+        <%= image_tag(image.img_url, class: 'd-block w-50 mx-auto') %>
         </div>
       <% end %> <!-- end loop-->
   </div>
@@ -29,4 +30,4 @@
 </div>
 
 <br/>
-<%= link_to 'Back', image_sets_path %>
+<%= link_to 'Back', image_sets_path, class: 'float-right' %>

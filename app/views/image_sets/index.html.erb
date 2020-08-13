@@ -2,33 +2,36 @@
 
 <h1>Image Sets</h1>
 
+<% @shuffled = @image_sets.shuffle %>
+
 <div id="carousel" class="carousel slide" data-ride="false" data-interval="false" data-wrap="false">
   <div class="carousel-inner">
-    <% @shuffled = @image_sets.shuffle %>
     <% @shuffled.each do |image_set| %>  <!-- shuffle function randomizes order -->
     <!-- first item must be active-->
     <% if image_set == @shuffled.first() %>
-      <div class="carousel-item active">
-    <%else%>
+    <div class="carousel-item active">
+      <%else%>
       <div class="carousel-item">
-    <%end%> <!--end conditionals -->
-        <%= image_tag(image_set.images.first().img_url, class: 'd-block w-100') %>
-    </div>
-    <% end %> <!-- end loop-->
+        <%end%> <!--end conditionals -->
+        <div class="container">
+            <%= image_tag(image_set.images.first().img_url, class: 'd-block w-50 mx-auto') %>
+            <%= button_to 'Select Image-set', {action: "show", id: image_set.id}, method: :get, class: 'btn-block' %>
+        </div>
+      </div>
+      <% end %> <!-- end loop-->
     </div>
 
-  <!--controls-->
-  <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+    <!--controls-->
+    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 </div>
 
-
-
-  <%#= link_to 'Select Image-set', image_set %>
-  <%= link_to 'Exit Practice', root_path %>
+<br/>
+<%= link_to 'Exit Practice', root_path, class: 'float-right' %>
