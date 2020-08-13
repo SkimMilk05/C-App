@@ -37,6 +37,7 @@
         <h2> Home Page -Dashboard </h2>
         <p> Welcome, <%= current_user.first_name %>! </p>
         <%= button_to "Practice", image_sets_path, method: :get %>
+        <%= link_to "Glossary", 'glossary' %>
       </div>
 
       <!--profile page-->

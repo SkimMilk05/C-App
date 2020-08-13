@@ -46,5 +46,7 @@ Rails.application.routes.draw do
     root to: 'general#index'
   end
 
+  get '/glossary' => 'navigation#glossary', as: 'glossary'
+
 
 end

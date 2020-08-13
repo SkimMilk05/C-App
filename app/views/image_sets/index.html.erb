@@ -13,10 +13,8 @@
       <%else%>
       <div class="carousel-item">
         <%end%> <!--end conditionals -->
-        <div class="container">
             <%= image_tag(image_set.images.first().img_url, class: 'd-block w-50 mx-auto') %>
             <%= button_to 'Select Image-set', {action: "show", id: image_set.id}, method: :get, class: 'btn-block' %>
-        </div>
       </div>
       <% end %> <!-- end loop-->
     </div>
