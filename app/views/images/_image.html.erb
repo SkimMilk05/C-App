@@ -1,0 +1,32 @@
+
+<!--displayin the image -->
+<%= image_tag(@image.img_url, usemap: "#map", id: "image", onclick: "colorlessClicked()")%>
+
+<!-- map for image -->
+<map name="map">
+  <% @image.green_areas.each do |green_area| %>
+  <div>
+  <area shape="circle" coords="<%= green_area.coordinates%>" alt="green area" onclick="greenClicked()">
+  <% end %>
+
+  <% @image.blue_areas.each do |blue_area| %>
+  <area shape="circle" coords="<%= blue_area.coordinates %>" alt="blue area" onclick="blueClicked()">
+  <% end %>
+</map>
+
+<!--button to record score and move on -->
+<button type="button" name="button" onclick="showScore()">Submit</button>
+
+<% @images = @image.image_set.images %>
+<% @current_image_index = @images.find_index(@image) %>
+<%= @next_image = @images[@current_image_index + 1] %>
+
+<%= @current_image_index + 1 %>/3
+<%= link_to 'Next', @next_image %>
+
+
+<%= link_to 'Back', image_sets_path %>
+
+<script type="text/javascript">
+  imageMapResize(); //rescale image-map
+</script>
