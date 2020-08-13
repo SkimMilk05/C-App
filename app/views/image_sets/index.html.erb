@@ -13,12 +13,11 @@
       <%else%>
       <div class="carousel-item">
         <%end%> <!--end conditionals -->
-            <% @first_image = image_set.images.first() %>
-            <%= image_tag(@first_image.img_url, class: 'd-block w-50 mx-auto') %>
-<%= button_to "Practice", image_sets_path, method: :get %>
-            <%= button_to('Select Image-set', images_path, method: :get, class: 'btn-block' %>
+            <%= image_tag(image_set.images.first().img_url, class: 'd-block w-50 mx-auto') %>
+<%#= button_to "Practice", image_sets_path, method: :get %>
+            <%= button_to('Select Image-set', image_set, method: :get, class: 'btn-block') %>
       </div>
-      <% end %> <!-- end loop-->
+      <% end %> <!-- end loop -->
     </div>
 
     <!--controls-->
