@@ -1,5 +1,3 @@
-//js for views/images/show.html.erb
-
 var correctSound = new Audio("<%= audio_path 'Correct.mp3' %>");
 var wrongSound = new Audio("<%= audio_path 'Wrong.mp3' %>");
 var okaySound = new Audio("<%= audio_path 'Okay.mp3' %>")
@@ -24,28 +22,34 @@ var greenAreasClickedWrong = 0;
 var colorlessAreasClicked = 0;
 
 //function to respond to clicks
+
 function greenClicked() {
   if (greenAreasLeft > 0) {
   greenAreasClickedRight++;
   greenAreasLeft--;
   correctSound.play();
   alert("You clicked green!");
+  $('#image').addClass('right');
 } else {
   greenAreasClickedWrong++;
   wrongSound.play();
   alert("Wrong!");
+  $('#image').addClass('wrong');
   }
 }
+
 function blueClicked() {
   if (greenAreasLeft == 0 && blueAreasLeft > 0) {
     blueAreasClickedRight++;
     blueAreasLeft--;
     correctSound.play();
     alert("You clicked blue!");
+    $('#image').addClass('right');
   } else {
     blueAreasClickedWrong++;
     okaySound.play();
     alert("Not yet!");
+    $('#image').addClass('okay');
   }
 }
 
@@ -53,6 +57,7 @@ function colorlessClicked() {
   colorlessAreasClicked++;
   wrongSound.play();
   alert("Wrong!");
+  $('#image').addClass('wrong');
 }
 
 //checking for score. This will be overview page later
