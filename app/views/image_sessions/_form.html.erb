@@ -11,23 +11,49 @@
     </div>
   <% end %>
 
-  <div class="start_time-field">
-    <%= form.label :start_time %>
-    <%= form.time_field :start_time %>
+  <div class="field">
+    <%= form.label :greenRight %>
+    <%= form.number_field :greenRight %>
   </div>
 
-  <div class="end_time-field">
-    <%= form.label :end_time %>
-    <%= form.time_field :start_time %>
-    end
+  <div class="field">
+    <%= form.label :blueRight %>
+    <%= form.number_field :blueRight %>
   </div>
 
-  <div class="images-field">
-    
+  <div class="field">
+    <%= form.label :greenWrong %>
+    <%= form.number_field :greenWrong %>
   </div>
 
-  <<div class="total_time-field">
-    total
+  <div class="field">
+    <%= form.label :blueWrong %>
+    <%= form.number_field :blueWrong %>
+  </div>
+
+  <div class="field">
+    <%= form.label :colorlessWrong %>
+    <%= form.number_field :colorlessWrong %>
+  </div>
+
+  <div class="field">
+    <%= form.label :greenLeft %>
+    <%= form.number_field :greenLeft %>
+  </div>
+
+  <div class="field">
+    <%= form.label :blueLeft %>
+    <%= form.number_field :blueLeft %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image_id %>
+    <%= form.text_field :image_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
   </div>
 
   <div class="actions">

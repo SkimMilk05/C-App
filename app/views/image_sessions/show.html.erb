@@ -1,9 +1,49 @@
 <p id="notice"><%= notice %></p>
 
-<% @image_session.images.each do |image| %>
-<% end %>
+<p>
+  <strong>Greenright:</strong>
+  <%= @image_session.greenRight %>
+</p>
 
-statistics here
+<p>
+  <strong>Blueright:</strong>
+  <%= @image_session.blueRight %>
+</p>
+
+<p>
+  <strong>Greenwrong:</strong>
+  <%= @image_session.greenWrong %>
+</p>
+
+<p>
+  <strong>Bluewrong:</strong>
+  <%= @image_session.blueWrong %>
+</p>
+
+<p>
+  <strong>Colorlesswrong:</strong>
+  <%= @image_session.colorlessWrong %>
+</p>
+
+<p>
+  <strong>Greenleft:</strong>
+  <%= @image_session.greenLeft %>
+</p>
+
+<p>
+  <strong>Blueleft:</strong>
+  <%= @image_session.blueLeft %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @image_session.image_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @image_session.user_id %>
+</p>
 
 <%= link_to 'Edit', edit_image_session_path(@image_session) %> |
-<%= link_to 'Back', image_sets_path %>
+<%= link_to 'Back', image_sessions_path %>

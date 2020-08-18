@@ -17,7 +17,7 @@ class ImageSessionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create image_session" do
     assert_difference('ImageSession.count') do
-      post image_sessions_url, params: { image_session: {  } }
+      post image_sessions_url, params: { image_session: { blueLeft: @image_session.blueLeft, blueRight: @image_session.blueRight, blueWrong: @image_session.blueWrong, colorlessWrong: @image_session.colorlessWrong, greenLeft: @image_session.greenLeft, greenRight: @image_session.greenRight, greenWrong: @image_session.greenWrong, image_id: @image_session.image_id, user_id: @image_session.user_id } }
     end
 
     assert_redirected_to image_session_url(ImageSession.last)
@@ -34,7 +34,7 @@ class ImageSessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update image_session" do
-    patch image_session_url(@image_session), params: { image_session: {  } }
+    patch image_session_url(@image_session), params: { image_session: { blueLeft: @image_session.blueLeft, blueRight: @image_session.blueRight, blueWrong: @image_session.blueWrong, colorlessWrong: @image_session.colorlessWrong, greenLeft: @image_session.greenLeft, greenRight: @image_session.greenRight, greenWrong: @image_session.greenWrong, image_id: @image_session.image_id, user_id: @image_session.user_id } }
     assert_redirected_to image_session_url(@image_session)
   end
 

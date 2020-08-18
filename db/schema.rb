@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_09_045327) do
+ActiveRecord::Schema.define(version: 2020_08_18_194448) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -50,13 +50,15 @@ ActiveRecord::Schema.define(version: 2020_08_09_045327) do
   end
 
   create_table "image_sessions", force: :cascade do |t|
-    t.integer "greenAreasClickedRight"
-    t.integer "blueAreasClickedRight"
-    t.integer "greenAreasClickedWrong"
-    t.integer "blueAreasClickedWrong"
-    t.integer "colorlessAreasClicked"
-    t.integer "user_id"
-    t.integer "image_id"
+    t.integer "greenRight"
+    t.integer "blueRight"
+    t.integer "greenWrong"
+    t.integer "blueWrong"
+    t.integer "colorlessWrong"
+    t.integer "greenLeft"
+    t.integer "blueLeft"
+    t.integer "image_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["image_id"], name: "index_image_sessions_on_image_id"
@@ -91,4 +93,6 @@ ActiveRecord::Schema.define(version: 2020_08_09_045327) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "image_sessions", "images"
+  add_foreign_key "image_sessions", "users"
 end

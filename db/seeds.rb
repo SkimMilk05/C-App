@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-
+testsession = ImageSession.create()
 
 
 ################imageset A

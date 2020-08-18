@@ -1,4 +1,5 @@
 class ImageSessionsController < ApplicationController
+  before_action :require_login
   before_action :set_image_session, only: [:show, :edit, :update, :destroy]
 
   # GET /image_sessions
@@ -28,7 +29,7 @@ class ImageSessionsController < ApplicationController
 
     respond_to do |format|
       if @image_session.save
-        format.html { redirect_to @image_session, notice: 'Image session was successfully created.' }
+        format.html { redirect_back fallback_location: image_sets_path, notice: 'Practice Started' }
         format.json { render :show, status: :created, location: @image_session }
       else
         format.html { render :new }
@@ -69,6 +70,6 @@ class ImageSessionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def image_session_params
-      params.require(:image_session).permit(:score, :start_time, :end_time, :total_time)
+      params.permit(:greenRight, :blueRight, :greenWrong, :blueWrong, :colorlessWrong, :greenLeft, :blueLeft, :image_id, :user_id)
     end
 end

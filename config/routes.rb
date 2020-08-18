@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :image_sessions
   resources :image_sets
   resources :blue_areas
   resources :green_areas
-  resources :image_sessions
   resources :images
+  resources :image_sessions
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   ##clearance default ###################################################
@@ -48,5 +51,6 @@ Rails.application.routes.draw do
 
   get '/glossary' => 'navigation#glossary', as: 'glossary'
 
-
+  #custom routes to update image_sessions
+  get 'image_sessions/:id/colorlessClicked', to: 'image_sessions#colorlessClicked'
 end
