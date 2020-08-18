@@ -1,24 +1,25 @@
 
-<!--displayin the image -->
-<%= image_tag(@image.img_url, usemap: "#map", id: "image", onclick: "colorlessClicked()")%>
+
+<!--displaying the image -->
+<%= image_tag(image.img_url, usemap: "#map", id: "image")%>
 
 <!-- map for image -->
 <map name="map">
-  <% @image.green_areas.each do |green_area| %>
+  <% image.green_areas.each do |green_area| %>
   <div>
-  <area shape="circle" coords="<%= green_area.coordinates%>" alt="green area" onclick="greenClicked()">
+  <area shape="circle" coords="<%= green_area.coordinates%>" alt="green area">
   <% end %>
 
-  <% @image.blue_areas.each do |blue_area| %>
-  <area shape="circle" coords="<%= blue_area.coordinates %>" alt="blue area" onclick="blueClicked()">
+  <% image.blue_areas.each do |blue_area| %>
+  <area shape="circle" coords="<%= blue_area.coordinates %>" alt="blue area" >
   <% end %>
 </map>
 
 <!--button to record score and move on -->
 <button type="button" name="button" onclick="showScore()">Submit</button>
 
-<% @images = @image.image_set.images %>
-<% @current_image_index = @images.find_index(@image) %>
+<% @images = image.image_set.images %>
+<% @current_image_index = @images.find_index(image) %>
 <%= @next_image = @images[@current_image_index + 1] %>
 
 <%= @current_image_index + 1 %>/3

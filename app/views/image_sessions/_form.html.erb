@@ -1,62 +1,18 @@
 <%= form_with(model: image_session, local: true) do |form| %>
-  <% if image_session.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(image_session.errors.count, "error") %> prohibited this image_session from being saved:</h2>
 
-      <ul>
-        <% image_session.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :greenRight %>
-    <%= form.number_field :greenRight %>
+  <div class="create-field">
+  <%= form_tag image_sessions_path, method: "post" do %>
+  <%= hidden_field_tag :user_id, current_user.id %>
+  <%= hidden_field_tag :image_id, image.id %>
+  <%= hidden_field_tag :greenRight, 0 %>
+  <%= hidden_field_tag :blueRight, 0 %>
+  <%= hidden_field_tag :greenWrong, 0 %>
+  <%= hidden_field_tag :blueWrong, 0 %>
+  <%= hidden_field_tag :colorlessWrong, 0 %>
+  <%= hidden_field_tag :greenLeft, @image.green_areas.length() %>
+  <%= hidden_field_tag :blueLeft, @image.blue_areas.length() %>
+  <%= submit_tag("Start practice!")%>
+  <%end%>
   </div>
 
-  <div class="field">
-    <%= form.label :blueRight %>
-    <%= form.number_field :blueRight %>
-  </div>
-
-  <div class="field">
-    <%= form.label :greenWrong %>
-    <%= form.number_field :greenWrong %>
-  </div>
-
-  <div class="field">
-    <%= form.label :blueWrong %>
-    <%= form.number_field :blueWrong %>
-  </div>
-
-  <div class="field">
-    <%= form.label :colorlessWrong %>
-    <%= form.number_field :colorlessWrong %>
-  </div>
-
-  <div class="field">
-    <%= form.label :greenLeft %>
-    <%= form.number_field :greenLeft %>
-  </div>
-
-  <div class="field">
-    <%= form.label :blueLeft %>
-    <%= form.number_field :blueLeft %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image_id %>
-    <%= form.text_field :image_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
