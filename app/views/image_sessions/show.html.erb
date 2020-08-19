@@ -44,6 +44,22 @@
   <strong>User:</strong>
   <%= @image_session.user_id %>
 </p>
+<!-- button to update image_session -->
+<%= button_to('Click green Right', image_session_path, params: {greenRight: @image_session.greenRight + 1, greenLeft: @image_session.greenLeft - 1}, method: :patch)%>
+
+<!-- button to update image_session -->
+<%= button_to('Click blue Right', image_session_path, params: {blueRight: @image_session.blueRight + 1, blueLeft: @image_session.blueLeft - 1}, method: :patch)%>
+
+<%= button_to('Click colorless', image_session_path, params: {colorless: @image_session.colorlessWrong + 1}, method: :patch)%>
+
+<!-- button to update image_session -->
+<%= button_to('Click blue Wrong', image_session_path, params: {blueWrong: @image_session.blueWrong + 1}, method: :patch)%>
+
+<%= button_to('Click green Wrong', image_session_path, params: {greenWrong: @image_session.greenWrong + 1}, method: :patch)%>
+
+
+
+
 
 <%= link_to 'Edit', edit_image_session_path(@image_session) %> |
 <%= link_to 'Back', image_sessions_path %>

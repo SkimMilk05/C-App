@@ -3,14 +3,14 @@
   <div class="create-field">
   <%= form_tag image_sessions_path, method: "post" do %>
   <%= hidden_field_tag :user_id, current_user.id %>
-  <%= hidden_field_tag :image_id, image.id %>
+  <%= hidden_field_tag :image_id, 3 %>
   <%= hidden_field_tag :greenRight, 0 %>
   <%= hidden_field_tag :blueRight, 0 %>
   <%= hidden_field_tag :greenWrong, 0 %>
   <%= hidden_field_tag :blueWrong, 0 %>
   <%= hidden_field_tag :colorlessWrong, 0 %>
-  <%= hidden_field_tag :greenLeft, @image.green_areas.length() %>
-  <%= hidden_field_tag :blueLeft, @image.blue_areas.length() %>
+  <%= hidden_field_tag :greenLeft, 2 %>
+  <%= hidden_field_tag :blueLeft, 1 %>
   <%= submit_tag("Start practice!")%>
   <%end%>
   </div>

@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
   #when you're signed out
   constraints Clearance::Constraints::SignedOut.new do
-    root to: 'general#index'
+    root to: 'general#index', as: :general_page 
   end
 
   get '/glossary' => 'navigation#glossary', as: 'glossary'

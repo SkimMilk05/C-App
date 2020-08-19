@@ -43,7 +43,7 @@ class ImageSessionsController < ApplicationController
   def update
     respond_to do |format|
       if @image_session.update(image_session_params)
-        format.html { redirect_to @image_session, notice: 'Image session was successfully updated.' }
+        format.html { redirect_to @image_session, notice: 'Area Clicked' }
         format.json { render :show, status: :ok, location: @image_session }
       else
         format.html { render :edit }
