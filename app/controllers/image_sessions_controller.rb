@@ -11,6 +11,7 @@ class ImageSessionsController < ApplicationController
   # GET /image_sessions/1
   # GET /image_sessions/1.json
   def show
+    @image = @image_session.image
   end
 
   # GET /image_sessions/new
@@ -51,6 +52,7 @@ class ImageSessionsController < ApplicationController
       end
     end
   end
+
 
   # DELETE /image_sessions/1
   # DELETE /image_sessions/1.json

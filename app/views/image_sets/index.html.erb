@@ -13,8 +13,8 @@
       <%else%>
       <div class="carousel-item">
         <%end%> <!--end conditionals -->
-            <%= @first_image = image_set.images.first() %>
-            <%= image_tag(i@first_image.img_url, class: 'd-block w-50 mx-auto') %>
+            <% @first_image = image_set.images.first() %>
+            <%= image_tag(@first_image.img_url, class: 'd-block w-50 mx-auto') %>
             <%= button_to('Select Image-set', image_set, method: :get, class: 'btn-block') %>
           <!-- button to create/start image_session -->
             <%= button_to('Create', image_sessions_path, params: {user_id: current_user.id, image_id: @first_image.id, greenRight: 0, blueRight: 0, greenWrong: 0, blueWrong:0, colorlessWrong: 0, greenLeft: @first_image.green_areas.length(), blueLeft: @first_image.blue_areas.length()}, method: :post, class:'btn-block')%>

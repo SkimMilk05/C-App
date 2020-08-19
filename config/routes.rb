@@ -46,11 +46,9 @@ Rails.application.routes.draw do
 
   #when you're signed out
   constraints Clearance::Constraints::SignedOut.new do
-    root to: 'general#index', as: :general_page 
+    root to: 'general#index', as: :general_page
   end
 
   get '/glossary' => 'navigation#glossary', as: 'glossary'
 
-  #custom routes to update image_sessions
-  get 'image_sessions/:id/colorlessClicked', to: 'image_sessions#colorlessClicked'
 end
