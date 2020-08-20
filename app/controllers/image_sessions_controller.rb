@@ -21,6 +21,7 @@ class ImageSessionsController < ApplicationController
 
   # GET /image_sessions/1/edit
   def edit
+    @image = @image_session.image
   end
 
   # POST /image_sessions
@@ -30,11 +31,9 @@ class ImageSessionsController < ApplicationController
 
     respond_to do |format|
       if @image_session.save
-        format.html { redirect_back fallback_location: image_sets_path, notice: 'Practice Started' }
-        format.json { render :show, status: :created, location: @image_session }
+        format.html { redirect_to edit_image_session_path(@image_session), notice: 'Practice Started' }
       else
         format.html { render :new }
-        format.json { render json: @image_session.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,11 +43,9 @@ class ImageSessionsController < ApplicationController
   def update
     respond_to do |format|
       if @image_session.update(image_session_params)
-        format.html { redirect_to @image_session, notice: 'Area Clicked' }
-        format.json { render :show, status: :ok, location: @image_session }
+        format.html { redirect_to edit_image_session_path(@image_session), notice: 'Area Clicked' }
       else
         format.html { render :edit }
-        format.json { render json: @image_session.errors, status: :unprocessable_entity }
       end
     end
   end

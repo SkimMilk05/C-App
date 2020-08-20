@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Image Sessions</h1>
+<h1>Image Sessions. Overall list</h1>
 
 <table>
   <thead>
@@ -19,7 +19,7 @@
   </thead>
 
   <tbody>
-    <% @image_sessions.each do |image_session| %>
+    <% current_user.image_sessions.each do |image_session| %>
       <tr>
         <td><%= image_session.greenRight %></td>
         <td><%= image_session.blueRight %></td>
@@ -42,20 +42,5 @@
 
 <%#= button_to 'Create default Session', image_session_path %>
 
-
-<div class="create-field">
-<%= form_tag image_sessions_path, method: "post" do %>
-<%= hidden_field_tag :user_id, current_user.id %>
-<%= hidden_field_tag :image_id, 1 %>
-<%= hidden_field_tag :greenRight, 0 %>
-<%= hidden_field_tag :blueRight, 0 %>
-<%= hidden_field_tag :greenWrong, 0 %>
-<%= hidden_field_tag :blueWrong, 0 %>
-<%= hidden_field_tag :colorlessWrong, 0 %>
-<%= hidden_field_tag :greenLeft, 2 %>
-<%= hidden_field_tag :blueLeft, 1 %>
-<%= submit_tag("Create it!")%>
-<%end%>
-</div>
 
 <%= link_to 'New Image Session', new_image_session_path %>

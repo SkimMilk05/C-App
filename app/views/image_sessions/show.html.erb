@@ -2,52 +2,7 @@
 
 <h1>Overview page</h1>
 
-<p>
-  <strong>Greenright:</strong>
-  <%= @image_session.greenRight %>
-</p>
+<%= render "scorepage" %>
 
-<p>
-  <strong>Blueright:</strong>
-  <%= @image_session.blueRight %>
-</p>
-
-<p>
-  <strong>Greenwrong:</strong>
-  <%= @image_session.greenWrong %>
-</p>
-
-<p>
-  <strong>Bluewrong:</strong>
-  <%= @image_session.blueWrong %>
-</p>
-
-<p>
-  <strong>Colorlesswrong:</strong>
-  <%= @image_session.colorlessWrong %>
-</p>
-
-<p>
-  <strong>Greenleft:</strong>
-  <%= @image_session.greenLeft %>
-</p>
-
-<p>
-  <strong>Blueleft:</strong>
-  <%= @image_session.blueLeft %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @image_session.image_id %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @image_session.user_id %>
-</p>
-
-
-
-<%= link_to 'Edit', edit_image_session_path(@image_session) %> |
-<%= link_to 'Back', image_sessions_path %>
+<%= link_to 'Back to Practice', image_sets_path %> |
+<%= link_to 'Exit Practice', signed_in_root_url %>

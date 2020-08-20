@@ -2,22 +2,21 @@
 
 <h1>Image Sets</h1>
 
-<% @shuffled = @image_sets.shuffle %>
 
 <div id="carousel" class="carousel slide" data-ride="false" data-interval="false" data-wrap="false">
   <div class="carousel-inner">
-    <% @shuffled.each do |image_set| %>  <!-- shuffle function randomizes order -->
+    <% @image_sets.each do |image_set| %>  <!-- shuffle function randomizes order -->
     <!-- first item must be active-->
-    <% if image_set == @shuffled.first() %>
-    <div class="carousel-item active">
-      <%else%>
+    <% if image_set == @image_sets.first() %>
+      <div class="carousel-item active">
+    <%else%>
       <div class="carousel-item">
-        <%end%> <!--end conditionals -->
-            <% @first_image = image_set.images.first() %>
-            <%= image_tag(@first_image.img_url, class: 'd-block w-50 mx-auto') %>
-            <%= button_to('Select Image-set', image_set, method: :get, class: 'btn-block') %>
+    <%end%> <!--end conditionals -->
+            <% @images = image_set.images %>
+            <%= image_tag(@images[0].img_url, class: 'd-block w-50 mx-auto') %>
+            <%= button_to('Biopsy on Green with acetowhite', image_sessions_path, params: {user_id: current_user.id, image_id: @images[1].id, greenRight: 0, blueRight: 0, greenWrong: 0, blueWrong:0, colorlessWrong: 0, greenLeft: @images[2].green_areas.length(), blueLeft: @images[2].blue_areas.length()}, method: :post, class:'btn-block')%>
+            <%= button_to('Biopsy on Acetowhite', image_sessions_path, params: {user_id: current_user.id, image_id: @images[2].id, greenRight: 0, blueRight: 0, greenWrong: 0, blueWrong:0, colorlessWrong: 0, greenLeft: @images[1].green_areas.length(), blueLeft: @images[1].blue_areas.length()}, method: :post, class:'btn-block')%>
           <!-- button to create/start image_session -->
-            <%= button_to('Create', image_sessions_path, params: {user_id: current_user.id, image_id: @first_image.id, greenRight: 0, blueRight: 0, greenWrong: 0, blueWrong:0, colorlessWrong: 0, greenLeft: @first_image.green_areas.length(), blueLeft: @first_image.blue_areas.length()}, method: :post, class:'btn-block')%>
       </div>
       <% end %> <!-- end loop -->
     </div>
