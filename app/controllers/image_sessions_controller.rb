@@ -12,6 +12,7 @@ class ImageSessionsController < ApplicationController
   # GET /image_sessions/1.json
   def show
     @image = @image_session.image
+    @image_set = @image.image_set
   end
 
   # GET /image_sessions/new

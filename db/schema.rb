@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 2020_08_18_194448) do
   end
 
   create_table "image_sets", force: :cascade do |t|
+    t.string "cervical_biopsies"
+    t.string "ECC"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

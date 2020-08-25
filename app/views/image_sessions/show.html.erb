@@ -2,7 +2,16 @@
 
 <h1>Overview page</h1>
 
-<%= render "scorepage" %>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <%= render "scorepage" %>
+    </div>
+    <div class="col-6"
+      <%= render "image_sets/summary_page" %>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Back to Practice', image_sets_path %> |
 <%= link_to 'Exit Practice', signed_in_root_url %>

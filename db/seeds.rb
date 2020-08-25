@@ -11,7 +11,7 @@ testsession = ImageSession.create()
 
 
 ################imageset A
-C107 = ImageSet.create()
+C107 = ImageSet.create(cervical_biopsies: '5:00 - CIN 1, 12:00 - CIN 1', ECC: 'not done')
 
 C107_Pre = Image.create(img_url: 'C107_Pre.JPG', image_set: C107)
 C107_Green = Image.create(img_url: 'C107_Green.JPG', image_set: C107)
@@ -30,7 +30,7 @@ GreenArea.create(coordinates: '853,835,83', image: C107_Post)
 BlueArea.create(coordinates: '706,679,62', image: C107_Post)
 
 ################imageset B
-C109 = ImageSet.create()
+C109 = ImageSet.create(cervical_biopsies: '1:00 - CIN 1, 11:00 CIN 1', ECC: 'not done')
 
 C109_Pre = Image.create(img_url: 'C109_Pre.JPG', image_set: C109)
 C109_Green = Image.create(img_url: 'C109_Green.JPG', image_set: C109)

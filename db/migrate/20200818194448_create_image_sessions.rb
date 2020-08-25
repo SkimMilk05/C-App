@@ -8,6 +8,8 @@ class CreateImageSessions < ActiveRecord::Migration[6.0]
       t.integer :colorlessWrong
       t.integer :greenLeft
       t.integer :blueLeft
+
+
       t.belongs_to :image, null: false, foreign_key: true
       t.belongs_to :user, null: false, foreign_key: true
 
