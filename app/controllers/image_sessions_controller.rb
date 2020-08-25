@@ -43,9 +43,13 @@ class ImageSessionsController < ApplicationController
   def update
     respond_to do |format|
       if @image_session.update(image_session_params)
-        format.html { redirect_to edit_image_session_path(@image_session), notice: 'Area Clicked' }
+        if finished?
+          format.html { redirect_to @image_session, notice: 'Procedure completed!' }
+        else
+          format.html { redirect_to edit_image_session_path(@image_session) }
+        end
       else
-        format.html { render :edit }
+        format.html { redirect_back f }
       end
     end
   end
@@ -69,6 +73,10 @@ class ImageSessionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def image_session_params
-      params.permit(:greenRight, :blueRight, :greenWrong, :blueWrong, :colorlessWrong, :greenLeft, :blueLeft, :image_id, :user_id)
+      params.permit(:greenRight, :blueRight, :blueWrong, :colorlessWrong, :greenLeft, :blueLeft, :image_id, :user_id)
+    end
+
+    def finished?
+      @image_session.greenLeft == 0 && @image_session.blueLeft == 0
     end
 end

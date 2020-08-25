@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+.invisible-button {
+  background: transparent;
+  border: none !important;
+}
