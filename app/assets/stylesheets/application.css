@@ -18,3 +18,7 @@
   background: transparent;
   border: none !important;
 }
+
+.hide {
+  display: none;
+}

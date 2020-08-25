@@ -7,6 +7,8 @@
   var greenAreasLeft = <%= @image.green_areas.length() %>; //global variable
   var blueAreasLeft = <%= @image.blue_areas.length() %>;
 
+  var numBlueAreas = <%= @image.blue_areas.length() %>;
+
 
 
 
@@ -16,8 +18,8 @@
     var feedback = document.getElementById('feedback');
     if (greenAreasLeft > 0) {
     greenAreasLeft--;
+    feedback.innerHTML = "Correct!";
     correctSound.play();
-    feedback.innerHTML = 'Correct!';
     }
   }
 
@@ -27,7 +29,12 @@
       blueAreasLeft--;
       feedback.innerHTML = "Correct!";
       correctSound.play();
-    } else {
+    }
+    else if (numBlueAreas == 0 ) {
+      feedback.innerHTML = "No need for ECC";
+      okaySound.play();
+    }
+    else {
       feedback.innerHTML = "Not yet! More areas to bioposy remaining";
       okaySound.play();
     }
@@ -46,14 +53,15 @@
 
 </script>
 
+<h3>
 <div id="feedback">
-  <h3>Click on the Area to Biopsy</h3>
+  Click on the Area to Biopsy
 </div>
-
+</h3>
 
 <!--displaying the image-->
 <%= form_with model: @image_session do |form| %>
-<%= form.hidden_field :colorlessWrong, :value => @image_session.colorlessWrong + 1 %>
+<%= hidden_field_tag :colorlessWrong, @image_session.colorlessWrong + 1 %>
 <%= form.button class: 'invisible-button' do %>
 <%= image_tag(@image.img_url, usemap: "#map", id: "image", onclick: "colorlessClicked()")%>
 <%end%>
@@ -65,9 +73,9 @@
     <!-- conditionals to count wrong and right -->
     <% @image.green_areas.each do |green_area| %>
           <%= form_with model: @image_session do |form| %>
-          <%= form.hidden_field :greenRight, :value => @image_session.greenRight + 1 %>
-          <%= form.hidden_field :greenLeft, :value => @image_session.greenLeft - 1 %>
-          <%= form.button data: {disable: true}, class: 'invisible-button' do %>
+          <%= hidden_field_tag :greenRight, @image_session.greenRight + 1 %>
+          <%= hidden_field_tag :greenLeft, @image_session.greenLeft - 1 %>
+          <%= form.button data: {disable: true}, class: 'hide' do %>
             <area shape="rect" coords="<%= green_area.coordinates%>" alt="green area" onclick="greenClicked()">
           <%end%>
         <%end%>
@@ -82,7 +90,7 @@
       <%else%>
         <%= hidden_field_tag :blueRight, @image_session.blueRight + 1 %>
       <%end%>
-      <%= form.button data: {disable: true}, class: 'invisible-button' do %>
+      <%= form.button data: {disable: true}, class: 'hide' do %>
         <button onclick="blueClicked()">ECC</button>
       <%end%>
     <%end%>
@@ -92,15 +100,7 @@
 
 
 <!--button to move on. Scores record as they go-->
-<%= form_with model: @image_session do |form| %>
-  <%= form.button data: {disable: true}, class: 'invisible-button' do %>
-  <% if @image_session.greenLeft == 0 && @image_session.blueLeft == 0 %>
-    <button onclick="greenClicked()">Complete Biopsy</button>
-  <% else %>
-    <button onclick="colorlessClicked()">Complete Biopsy</button>
-  <% end%>
-  <%end%>
-  <%end%>
+<%= button_to("Complete Biopsy", image_session_path, method: :get) %>
 
 
 

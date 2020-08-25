@@ -31,7 +31,7 @@ class ImageSessionsController < ApplicationController
 
     respond_to do |format|
       if @image_session.save
-        format.html { redirect_to edit_image_session_path(@image_session), notice: 'Practice Started' }
+        format.html { redirect_to edit_image_session_path(@image_session) }
       else
         format.html { render :new }
       end
@@ -44,7 +44,7 @@ class ImageSessionsController < ApplicationController
     respond_to do |format|
       if @image_session.update(image_session_params)
         if finished?
-          format.html { redirect_to @image_session, notice: 'Procedure completed!' }
+          format.html { redirect_to @image_session}
         else
           format.html { redirect_to edit_image_session_path(@image_session) }
         end
