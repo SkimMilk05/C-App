@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :surveys
   resources :image_sessions
   resources :image_sets
   resources :blue_areas

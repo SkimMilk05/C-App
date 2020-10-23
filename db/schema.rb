@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_18_194448) do
+ActiveRecord::Schema.define(version: 2020_10_23_043310) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -80,6 +80,22 @@ ActiveRecord::Schema.define(version: 2020_08_18_194448) do
     t.index ["image_set_id"], name: "index_images_on_image_set_id"
   end
 
+  create_table "surveys", force: :cascade do |t|
+    t.integer "level"
+    t.integer "school"
+    t.integer "speciality"
+    t.integer "obgyn"
+    t.integer "lectures"
+    t.string "training"
+    t.integer "experience"
+    t.integer "prepared"
+    t.integer "rate"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_surveys_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -97,4 +113,5 @@ ActiveRecord::Schema.define(version: 2020_08_18_194448) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "image_sessions", "images"
   add_foreign_key "image_sessions", "users"
+  add_foreign_key "surveys", "users"
 end
