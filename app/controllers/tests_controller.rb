@@ -1,4 +1,5 @@
 class TestsController < ApplicationController
+   before_action :require_login
   before_action :set_test, only: [:show, :edit, :update, :destroy]
 
   # GET /tests
@@ -32,7 +33,6 @@ class TestsController < ApplicationController
         format.json { render :show, status: :created, location: @test }
       else
         format.html { render :new }
-        format.json { render json: @test.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -69,6 +69,6 @@ class TestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def test_params
-      params.fetch(:test, {})
+      params.permit(:user_id, :pre_test, :question_correct)
     end
 end
