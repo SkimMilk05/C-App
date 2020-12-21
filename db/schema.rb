@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_23_043310) do
+ActiveRecord::Schema.define(version: 2020_12_21_180807) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -94,6 +94,48 @@ ActiveRecord::Schema.define(version: 2020_10_23_043310) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_surveys_on_user_id"
+  end
+
+  create_table "test_answers", force: :cascade do |t|
+    t.integer "test_question_id"
+    t.integer "test_id"
+    t.string "letter"
+    t.string "answer"
+    t.boolean "correct"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["test_id"], name: "index_test_answers_on_test_id"
+    t.index ["test_question_id"], name: "index_test_answers_on_test_question_id"
+  end
+
+  create_table "test_options", force: :cascade do |t|
+    t.integer "test_question_id"
+    t.string "letter"
+    t.string "text"
+    t.string "img_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["test_question_id"], name: "index_test_options_on_test_question_id"
+  end
+
+  create_table "test_questions", force: :cascade do |t|
+    t.integer "test_id"
+    t.boolean "active"
+    t.string "question"
+    t.string "correct_ans"
+    t.string "img_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["test_id"], name: "index_test_questions_on_test_id"
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.integer "user_id"
+    t.boolean "pre_test"
+    t.integer "questions_correct"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_tests_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
