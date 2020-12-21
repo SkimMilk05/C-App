@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :surveys
+  resources :tests
+  resources :test_options
+  resources :test_answers
+  resources :test_questions
   resources :image_sessions
   resources :image_sets
   resources :blue_areas
