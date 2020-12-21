@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_23_043310) do
+ActiveRecord::Schema.define(version: 2020_12_21_180807) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -80,20 +80,46 @@ ActiveRecord::Schema.define(version: 2020_10_23_043310) do
     t.index ["image_set_id"], name: "index_images_on_image_set_id"
   end
 
-  create_table "surveys", force: :cascade do |t|
-    t.integer "level"
-    t.integer "school"
-    t.integer "speciality"
-    t.integer "obgyn"
-    t.integer "lectures"
-    t.string "training"
-    t.integer "experience"
-    t.integer "prepared"
-    t.integer "rate"
-    t.integer "user_id", null: false
+  create_table "test_answers", force: :cascade do |t|
+    t.integer "test_question_id"
+    t.integer "test_id"
+    t.string "letter"
+    t.string "answer"
+    t.boolean "correct"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_surveys_on_user_id"
+    t.index ["test_id"], name: "index_test_answers_on_test_id"
+    t.index ["test_question_id"], name: "index_test_answers_on_test_question_id"
+  end
+
+  create_table "test_options", force: :cascade do |t|
+    t.integer "test_question_id"
+    t.string "letter"
+    t.string "text"
+    t.string "img_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["test_question_id"], name: "index_test_options_on_test_question_id"
+  end
+
+  create_table "test_questions", force: :cascade do |t|
+    t.integer "test_id"
+    t.boolean "active"
+    t.string "question"
+    t.string "correct_ans"
+    t.string "img_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["test_id"], name: "index_test_questions_on_test_id"
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.integer "user_id"
+    t.boolean "pre_test"
+    t.integer "questions_correct"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_tests_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -113,5 +139,4 @@ ActiveRecord::Schema.define(version: 2020_10_23_043310) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "image_sessions", "images"
   add_foreign_key "image_sessions", "users"
-  add_foreign_key "surveys", "users"
 end
