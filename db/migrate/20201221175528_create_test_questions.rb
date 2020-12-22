@@ -5,10 +5,10 @@ class CreateTestQuestions < ActiveRecord::Migration[6.0]
 
 
       t.boolean :active
-      t.string :question
-      t.string :correct_ans
+      t.text :question
+      t.text :correct_ans
 
-      t.string :img_url
+      t.text :img_url
 
       t.timestamps
     end
