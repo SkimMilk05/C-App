@@ -3,8 +3,6 @@
 
 begin
    require_relative 'config/application'
-rescue LoadError => e
-   raise e unless ENV['RAILS_ENV'] == "production"
+   Rails.application.load_tasks
+rescue LoadError
 end
-
-Rails.application.load_tasks

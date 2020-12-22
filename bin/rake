@@ -5,5 +5,8 @@ rescue LoadError => e
   raise unless e.message.include?('spring')
 end
 require_relative '../config/boot'
+begin
 require 'rake'
 Rake.application.run
+rescue LoadError
+end
