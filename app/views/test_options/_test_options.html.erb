@@ -1,0 +1,11 @@
+  <div class="choice-div">
+     <% if test_option.text != nil %>
+         <%= label_tag test_option.letter + ': '+test_option.text %>
+     <%else%>
+         <%= label_tag test_option.letter + ': ' %>
+     <%end%>
+
+     <% if test_option.img_url != nil %>
+         <%= image_tag(test_option.img_url) %>
+     <%end%>
+  </div>

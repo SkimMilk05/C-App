@@ -11,6 +11,13 @@
     </div>
   <% end %>
 
+  <h1>Test</h1>
+
+  hello outside of for loop. does this show?
+  <% @test_questions.each do |test_question| %>
+  hello this is a test question
+  <%end%>
+
   <div class="actions">
     <%= form.submit %>
   </div>

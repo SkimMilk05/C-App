@@ -15,6 +15,7 @@ class TestAnswersController < ApplicationController
   # GET /test_answers/new
   def new
     @test_answer = TestAnswer.new
+    
   end
 
   # GET /test_answers/1/edit

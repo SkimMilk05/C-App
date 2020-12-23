@@ -11,11 +11,16 @@ class TestsController < ApplicationController
   # GET /tests/1
   # GET /tests/1.json
   def show
+     @test_questions = TestQuestion.all
   end
 
   # GET /tests/new
   def new
-    @test = Test.new
+     @test = Test.new
+
+     @test_questions.each do |q|
+      q.test_id = @test.id
+    end
   end
 
   # GET /tests/1/edit
@@ -26,6 +31,12 @@ class TestsController < ApplicationController
   # POST /tests.json
   def create
     @test = Test.new(test_params)
+    @test_questions = TestQuestion.all
+
+
+    @test_questions.each do |q|
+      q.test_id = @test.id
+   end
 
     respond_to do |format|
       if @test.save

@@ -11,7 +11,6 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
-
   end
 
   # GET /images/new

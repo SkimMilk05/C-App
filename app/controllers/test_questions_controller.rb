@@ -10,6 +10,8 @@ class TestQuestionsController < ApplicationController
   # GET /test_questions/1
   # GET /test_questions/1.json
   def show
+
+     @test_options = @test_question.test_options
   end
 
   # GET /test_questions/new

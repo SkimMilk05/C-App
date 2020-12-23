@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_test_question_path(@test_question) %> |
+<%= render 'form', test_question: @test_question%>
+
+<%= link_to 'Edit', edit_test_question_path(@test_question) %>
 <%= link_to 'Back', test_questions_path %>

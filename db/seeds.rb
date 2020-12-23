@@ -6,12 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
+preTest = Test.create(user_id: 1, pre_test: true, questions_correct: 0)
 ##########################################################################################################
 #making test questions and options
 
 #Question 1
-Q1 = TestQuestion.create(active: true, question: "Which of the following statements is false:", correct_ans: 'C')
+Q1 = TestQuestion.create(active: true, question: "Which of the following statements is false:", correct_ans: 'C', test: preTest)
 Q1A = TestOption.create(test_question: Q1, letter: 'A', text: 'Normal squamous epithelium becomes dark brown with Lugol’s due to staining of the intracellular glycogen in superficial layers', img_url: nil)
 Q1B = TestOption.create(test_question: Q1, letter: 'B', text: 'Normal columnar epithelium may temporarily become white with application of acetic acid', img_url: nil)
 Q1C = TestOption.create(test_question: Q1, letter: 'C', text: 'The presence of columnar epithelium on the ectocervix is abnormal', img_url: nil)
