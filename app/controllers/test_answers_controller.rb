@@ -1,5 +1,6 @@
 class TestAnswersController < ApplicationController
-  before_action :set_test_answer, only: [:show, :edit, :update, :destroy]
+   before_action :require_login
+   before_action :set_test_answer, only: [:show, :edit, :update, :destroy]
 
   # GET /test_answers
   # GET /test_answers.json
@@ -10,16 +11,19 @@ class TestAnswersController < ApplicationController
   # GET /test_answers/1
   # GET /test_answers/1.json
   def show
+     @test_question = @test_answer.test_question
+     @test_options = @test_question.test_options
   end
 
   # GET /test_answers/new
   def new
     @test_answer = TestAnswer.new
-    
   end
 
   # GET /test_answers/1/edit
   def edit
+     @test_question = @test_answer.test_question
+     @test_options = @test_question.test_options
   end
 
   # POST /test_answers
@@ -70,6 +74,6 @@ class TestAnswersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def test_answer_params
-      params.fetch(:test_answer, {})
+      params.permit(:test_question_id, :test_id, :letter, :answer, :correct)
     end
 end

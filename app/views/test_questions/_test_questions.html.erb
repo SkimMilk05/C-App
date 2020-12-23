@@ -1,0 +1,10 @@
+  <!--displaying the test question-->
+  <div class="question-field">
+     <% if test_question.question != nil %>
+      <%= label_tag test_question.question%>
+     <%end%>
+
+     <%if test_question.img_url != nil %>
+      <%= label_tag test_question.img_url %>
+     <%end%>
+  </div>

@@ -18,6 +18,9 @@ Q1C = TestOption.create(test_question: Q1, letter: 'C', text: 'The presence of c
 Q1D = TestOption.create(test_question: Q1, letter: 'D', text: 'Prominent, branching blood vessels can be normal', img_url: nil)
 Q1E = TestOption.create(test_question: Q1, letter: 'E', text: 'The cervix increases in size under the influence of estrogen', img_url: nil)
 
+#TESTER CODE
+A1 = TestAnswer.create(test: preTest, test_question: Q1, letter: nil, answer: nil, correct: false)
+
 #Question 2
 Q2 = TestQuestion.create(active: true, question: "What is the most common error in colposcopy?", correct_ans: 'A')
 Q2A = TestOption.create(test_question: Q2, letter: 'A', text: 'Failure to identify the SCJ', img_url: nil)
