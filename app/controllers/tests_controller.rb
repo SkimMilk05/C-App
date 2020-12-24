@@ -11,7 +11,7 @@ class TestsController < ApplicationController
   # GET /tests/1
   # GET /tests/1.json
   def show
-     @test_questions = TestQuestion.all
+     @test_questions = @test.test_questions.all
   end
 
   # GET /tests/new

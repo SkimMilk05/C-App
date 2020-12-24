@@ -27,15 +27,20 @@ class PreSurveysController < ApplicationController
   def create
     @pre_survey = PreSurvey.new(pre_survey_params)
 
-    respond_to do |format|
-      if @pre_survey.save
-        format.html { redirect_to @pre_survey, notice: 'Pre survey was successfully created.' }
-        format.json { render :show, status: :created, location: @pre_survey }
-      else
-        format.html { render :new }
-        format.json { render json: @pre_survey.errors, status: :unprocessable_entity }
-      end
-    end
+    begin
+       respond_to do |format|
+         if @pre_survey.save
+           format.html { redirect_to @pre_survey, notice: 'Pre survey was successfully created.' }
+           format.json { render :show, status: :created, location: @pre_survey }
+         else
+           format.html { render :new , notice: 'Presurvey not created'}
+           format.json { render json: @pre_survey.errors, status: :unprocessable_entity }
+         end
+       end
+   rescue ActiveRecord::NotNullViolation => e
+      format.html {redirect_to @pre_survey, notice: 'hello'}
+   end
+
   end
 
   # PATCH/PUT /pre_surveys/1
@@ -70,6 +75,6 @@ class PreSurveysController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pre_survey_params
-      params.fetch(:pre_survey, {})
+      params.fetch(:pre_survey, {}).permit(:user_id, :Q1, :Q2, :Q3, :Q4, :Q5, :Q6_Lectures, :Q6_Online_modules, :Q6_Hands_on_simulation, :Q6_Web_based_simulation, :Q6_Chalk_talk, :Q6_Case_based_teaching,:Q6_Other, :Q6_Other_value, :Q7, :Q8, :Q9 )
     end
 end

@@ -41,6 +41,8 @@
         <%= button_to('Take PreTest', tests_path, method: :post, class:'', )%>
          <%= button_to('Take PostTest', tests_path, params: {user_id: current_user.id, pre_test: false, questions_correct: 0 }, method: :post, class:'')%>
 
+         <%= button_to 'TakePreSurvey', new_pre_survey_path, method: :get %>
+         <%= button_to 'TakePostSurvey', new_post_survey_path, method: :get %>
 
         <%#= button_to('Biopsy on Acetowhite', image_sessions_path, params: {user_id: current_user.id, image_id: @images[2].id, greenRight: 0, blueRight: 0, greenWrong: 0, blueWrong:0, colorlessWrong: 0, greenLeft: @images[1].green_areas.length(), blueLeft: @images[1].blue_areas.length()}, method: :post, class:'btn-block')%>
 
@@ -50,8 +52,7 @@
       <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
         <h2>Profile and User Info</h2>
         Profile: <%= current_user.first_name + " " + current_user.last_name %>
-        <br/>
-        School: <%= current_user.school %>
+
 
       </div>
 
@@ -61,6 +62,9 @@
           Name: <%= current_user.first_name + " " + current_user.last_name %> <br/>
           email: <%= current_user.email %> <br/>
           user since: <%= current_user.created_at %> <br/>
+
+          confirmation_token: <%= current_user.confirmation_token %>
+          remember_token: <%= current_user.remember_token %>
 
         <div>
           <h4>General</h4>

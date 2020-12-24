@@ -35,14 +35,14 @@ class UsersController < Clearance::UsersController
    password = user_params.delete(:password)
    first_name = user_params.delete(:first_name) # added name
    last_name = user_params.delete(:last_name)
-   school = user_params.delete(:school) #added school
+   #school = user_params.delete(:school) #added school
 
    Clearance.configuration.user_model.new(user_params).tap do |user|
      user.email = email
      user.password = password
      user.first_name = first_name #added name
      user.last_name = last_name
-     user.school = school #added school
+     #user.school = school #added school
    end
  end
 

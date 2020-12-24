@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_24_041959) do
+ActiveRecord::Schema.define(version: 2020_12_24_202200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,17 +83,34 @@ ActiveRecord::Schema.define(version: 2020_12_24_041959) do
     t.index ["image_set_id"], name: "index_images_on_image_set_id"
   end
 
+  create_table "post_surveys", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "Q1", null: false
+    t.text "Q2", null: false
+    t.text "Q3", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_post_surveys_on_user_id"
+  end
+
   create_table "pre_surveys", force: :cascade do |t|
     t.bigint "user_id"
-    t.text "Q1"
-    t.text "Q2"
-    t.text "Q3"
-    t.text "Q4"
-    t.text "Q5"
-    t.text "Q6"
-    t.text "Q7"
-    t.text "Q8"
-    t.text "Q9"
+    t.text "Q1", null: false
+    t.text "Q2", null: false
+    t.text "Q3", null: false
+    t.text "Q4", null: false
+    t.text "Q5", null: false
+    t.text "Q6_Lectures"
+    t.text "Q6_Online_modules"
+    t.text "Q6_Hands_on_simulation"
+    t.text "Q6_Web_based_simulation"
+    t.text "Q6_Chalk_talk"
+    t.text "Q6_Case_based_teaching"
+    t.text "Q6_Other"
+    t.text "Q6_Other_value"
+    t.text "Q7", null: false
+    t.text "Q8", null: false
+    t.text "Q9", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_pre_surveys_on_user_id"
@@ -150,7 +167,6 @@ ActiveRecord::Schema.define(version: 2020_12_24_041959) do
     t.string "remember_token", limit: 128, null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "school"
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end

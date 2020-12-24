@@ -1,45 +1,124 @@
 <%= form_with(model: pre_survey, local: true) do |form| %>
-  <div class="demographics">
-     Demographics
 
-     1. What level are you currently in training?
-     <%= form.radio_button :Q1, a %> Student, MS3
-     <%= form.radio_button :Q1, b %> Student, MS4
-     <%= form.radio_button :Q1, c%>Resident, PGY1
+   <%= form.hidden_field :user_id, value: current_user.id %>
+   <%=flash[:notice]%>
 
-     <%= form.radio_button :Q1, d%>Resident, PGY2
+   <ol type="1">
+      <div class="demographics">
+         <h5>Demographics</h5>
 
-     <%= form.radio_button :Q1, e %>Resident, PGY3
+         <li>
+           What level are you currently in training?
+           <ul style="list-style-type:none;">
+              <li><%= form.radio_button :Q1, 'Student, MS3' %> Student, MS3</li>
+              <li><%= form.radio_button :Q1, 'Student, MS4' %> Student, MS4</li>
+              <li><%= form.radio_button :Q1, 'Resident, PGY1'%> Resident, PGY1</li>
+              <li><%= form.radio_button :Q1, 'Resident, PGY2'%> Resident, PGY2</li>
+              <li><%= form.radio_button :Q1, 'Resident, PGY3'%> Resident, PGY3</li>
+              <li><%= form.radio_button :Q1, 'Resident, PGY4'%> Resident, PGY4</li>
+              <li><%= form.radio_button :Q1, 'Attending physician'%> Attending physician</li>
+              <li><%= form.radio_button :Q1, 'Nurse practitioner'%> Nurse practitioner</li>
+              <li><%= form.radio_button :Q1, 'NP or PA student'%> NP or PA student</li>
+              <li><%= form.radio_button :Q1, "#{form.text_field :Q1}"%> Other:</li>
+           </ul>
+        </li>
 
-     <%= form.radio_button :Q1, f %>Resident, PGY4
+        <li>
+           Where are you training/practicing currently?
+           <ul style="list-style-type:none;">
+              <li><%= form.radio_button :Q2, 'UVA' %>  University of Virginia</li>
+              <li><%= form.radio_button :Q2, "#{form.text_field :Q1}"%> Other:</li>
+           </ul>
+        </li>
 
-     <%= form.radio_button :Q1, g %>Attending physician
+        <li>
+           What specialty do you practice (or plan to practice)?
+           <ul style="list-style-type:none;">
+              <li><%= form.radio_button :Q3, 'OBGYN' %>  OBGYN</li>
+              <li><%= form.radio_button :Q3, 'Family medicine' %> Family medicine</li>
+              <li><%= form.radio_button :Q3, 'Internal medicine'%> Internal medicine</li>
+              <li><%= form.radio_button :Q3, "#{form.text_field :Q1}"%> Other:</li>
+           </ul>
+        </li>
 
-     <%= form.radio_button :Q1, h %>Nurse practitioner
-     <%= form.radio_button :Q1, i %>NP or PA student
+       <li>
+          If OBGYN – which field do you plan to practice in?
+          <ul style="list-style-type:none;">
+             <li><%= form.radio_button :Q4, 'General OBGYN' %>  General OBGYN</li>
+             <li><%= form.radio_button :Q4, 'Gynecologic Oncology' %> Gynecologic Oncology</li>
+             <li><%= form.radio_button :Q4, 'Maternal fetal medicine'%> Maternal fetal medicine</li>
+             <li><%= form.radio_button :Q4, 'Urogynecology'%> Urogynecology</li>
+             <li><%= form.radio_button :Q4, 'Reproductive endocrinology and infertility'%> Reproductive endocrinology and infertility</li>
+             <li><%= form.radio_button :Q4, 'Benign gynecology (MIGS, etc)'%> Benign gynecology (MIGS, etc)</li>
+             <li><%= form.radio_button :Q4, "#{form.text_field :Q1}"%> Other:</li>
+             <li><%= form.radio_button :Q4, 'N/a'%> N/a</li>
+          </ul>
+       </li>
+     </div>
 
-     <%= form.radio_button :Q1, j %>Other:
-     
-     2. Where are you training/practicing currently?
 
-     3. What specialty do you practice (or plan to practice)?
+     <div class="education">
+        <h5>Education/Experience</h5>
+        <li>
+           How many lectures/educational sessions have you received on colposcopy as part of your training?
+           <ul style="list-style-type:none;">
+             <li><%= form.radio_button :Q5, '0' %>  0</li>
+             <li><%= form.radio_button :Q5, '1' %> 1</li>
+             <li><%= form.radio_button :Q5, '2'%> 2</li>
+             <li><%= form.radio_button :Q5, '3'%> 3</li>
+             <li><%= form.radio_button :Q5, '4'%> 4</li>
+             <li><%= form.radio_button :Q5, '>4'%> >4</li>
+          </ul>
+        </li>
 
-     4. If OBGYN – which field do you plan to practice in?
-  </div>
+        <li>
+           What aspects of colposcopy education have been incorporated into your training? (please check all that apply)
+           <ul style="list-style-type:none;">
+             <li><%= form.check_box :Q6_Lectures %>  Lectures</li>
+             <li><%= form.check_box :Q6_Online_modules %> Online modules</li>
+             <li><%= form.check_box :Q6_Hands_on_simulation%> Hands on simulation/trainers</li>
+             <li><%= form.check_box :Q6_Web_based_simulation%> Web based simulation</li>
+             <li><%= form.check_box :Q6_Chalk_talk%> Chalk talks</li>
+             <li><%= form.check_box :Q6_Case_based_teaching %> Case based teaching</li>
+             <li><%= form.check_box :Q6_Other%> Other: <%= form.text_field :Q6_Other_value %></li>
+          </ul>
+        </li>
 
-  <div class="education">
-     Education/Experience
+        <li>
+           How much prior clinical experience have you had with colposcopy?
+           <ul style="list-style-type:none;">
+             <li><%= form.radio_button :Q7, '0' %>  None</li>
+             <li><%= form.radio_button :Q7, '1' %> <5 patients</li>
+             <li><%= form.radio_button :Q7, '2'%> 5-15 patients</li>
+             <li><%= form.radio_button :Q7, '3'%> 15-30 patients</li>
+             <li><%= form.radio_button :Q7, '4'%> 30-50 patients</li>
+             <li><%= form.radio_button :Q7, '>4'%> >50 patients</li>
+          </ul>
+        </li>
 
-     5. How many lectures/educational sessions have you received on colposcopy as part of your training?
+        <li>
+           How prepared do you feel to perform colposcopy independently?
+           <ul style="list-style-type:none;">
+             <li><%= form.radio_button :Q8, 'Not at all prepared' %>  Not at all prepared</li>
+             <li><%= form.radio_button :Q8, 'Somewhat prepared' %> Somewhat prepared</li>
+             <li><%= form.radio_button :Q8, 'Adequately prepared'%> Adequately prepared</li>
+             <li><%= form.radio_button :Q8, 'Very well prepared'%> Very well prepared</li>
+          </ul>
 
-     6. What aspects of colposcopy education have been incorporated into your training? (please check all that apply)
+        </li>
 
-     7. How much prior clinical experience have you had with colposcopy?
-
-     8. How prepared do you feel to perform colposcopy independently?
-
-     9. Please rate how important you feel it is to be trained in colposcopy
-  </div>
+        <li>
+           Please rate how important you feel it is to be trained in colposcopy
+           <ul style="list-style-type:none;">
+             <li><%= form.radio_button :Q9, 'Very important' %>  Very important</li>
+             <li><%= form.radio_button :Q9, 'Important' %> Important</li>
+             <li><%= form.radio_button :Q9, 'Neutral'%> Neutral</li>
+             <li><%= form.radio_button :Q9, 'Unimportant'%> Unimportant</li>
+             <li><%= form.radio_button :Q9, 'Very Unimportant'%> Very Unimportant</li>
+          </ul>
+        </li>
+     </div>
+</ol>
 
 
 
