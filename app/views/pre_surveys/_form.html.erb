@@ -1,5 +1,31 @@
 <%= form_with(model: pre_survey, local: true) do |form| %>
-  
+  <div class="demographics">
+     Demographics
+
+     1. What level are you currently in training?
+
+     2. Where are you training/practicing currently?
+
+     3. What specialty do you practice (or plan to practice)?
+
+     4. If OBGYN – which field do you plan to practice in?
+  </div>
+
+  <div class="education">
+     Education/Experience
+
+     5. How many lectures/educational sessions have you received on colposcopy as part of your training?
+
+     6. What aspects of colposcopy education have been incorporated into your training? (please check all that apply)
+
+     7. How much prior clinical experience have you had with colposcopy?
+
+     8. How prepared do you feel to perform colposcopy independently?
+     
+     9. Please rate how important you feel it is to be trained in colposcopy
+  </div>
+
+
 
   <div class="actions">
     <%= form.submit %>
