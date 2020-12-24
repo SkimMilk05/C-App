@@ -45,6 +45,10 @@ class TestAnswersController < ApplicationController
   # PATCH/PUT /test_answers/1
   # PATCH/PUT /test_answers/1.json
   def update
+
+     @test_question = @test_answer.test_question
+     @test_options = @test_question.test_options
+
     respond_to do |format|
       if @test_answer.update(test_answer_params)
         format.html { redirect_to @test_answer, notice: 'Test answer was successfully updated.' }

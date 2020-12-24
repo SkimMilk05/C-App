@@ -1,0 +1,2 @@
+class PreSurvey < ApplicationRecord
+end

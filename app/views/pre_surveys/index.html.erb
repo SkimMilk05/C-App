@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pre Surveys</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pre_surveys.each do |pre_survey| %>
+      <tr>
+        <td><%= link_to 'Show', pre_survey %></td>
+        <td><%= link_to 'Edit', edit_pre_survey_path(pre_survey) %></td>
+        <td><%= link_to 'Destroy', pre_survey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pre Survey', new_pre_survey_path %>

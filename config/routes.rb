@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pre_surveys
   resources :tests
   resources :test_options
   resources :test_answers
