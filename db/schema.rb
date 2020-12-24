@@ -16,37 +16,37 @@ ActiveRecord::Schema.define(version: 2020_12_21_180807) do
   enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
+    t.text "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
+    t.text "key", null: false
+    t.text "filename", null: false
+    t.text "content_type"
     t.text "metadata"
     t.bigint "byte_size", null: false
-    t.string "checksum", null: false
+    t.text "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
   create_table "blue_areas", force: :cascade do |t|
-    t.string "coordinates"
-    t.integer "image_id"
+    t.text "coordinates"
+    t.bigint "image_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["image_id"], name: "index_blue_areas_on_image_id"
   end
 
   create_table "green_areas", force: :cascade do |t|
-    t.string "coordinates"
-    t.integer "image_id"
+    t.text "coordinates"
+    t.bigint "image_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["image_id"], name: "index_green_areas_on_image_id"
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 2020_12_21_180807) do
     t.integer "colorlessWrong"
     t.integer "greenLeft"
     t.integer "blueLeft"
-    t.integer "image_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "image_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["image_id"], name: "index_image_sessions_on_image_id"
@@ -69,25 +69,25 @@ ActiveRecord::Schema.define(version: 2020_12_21_180807) do
   end
 
   create_table "image_sets", force: :cascade do |t|
-    t.string "cervical_biopsies"
-    t.string "ECC"
+    t.text "cervical_biopsies"
+    t.text "ECC"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "images", force: :cascade do |t|
-    t.string "img_url"
+    t.text "img_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "image_set_id"
+    t.bigint "image_set_id"
     t.index ["image_set_id"], name: "index_images_on_image_set_id"
   end
 
   create_table "test_answers", force: :cascade do |t|
-    t.integer "test_question_id"
-    t.integer "test_id"
-    t.string "letter"
-    t.string "answer"
+    t.bigint "test_question_id"
+    t.bigint "test_id"
+    t.text "letter"
+    t.text "answer"
     t.boolean "correct"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -96,28 +96,28 @@ ActiveRecord::Schema.define(version: 2020_12_21_180807) do
   end
 
   create_table "test_options", force: :cascade do |t|
-    t.integer "test_question_id"
-    t.string "letter"
-    t.string "text"
-    t.string "img_url"
+    t.bigint "test_question_id"
+    t.text "letter"
+    t.text "text"
+    t.text "img_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["test_question_id"], name: "index_test_options_on_test_question_id"
   end
 
   create_table "test_questions", force: :cascade do |t|
-    t.integer "test_id"
+    t.bigint "test_id"
     t.boolean "active"
-    t.string "question"
-    t.string "correct_ans"
-    t.string "img_url"
+    t.text "question"
+    t.text "correct_ans"
+    t.text "img_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["test_id"], name: "index_test_questions_on_test_id"
   end
 
   create_table "tests", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.boolean "pre_test"
     t.integer "questions_correct"
     t.datetime "created_at", precision: 6, null: false
@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(version: 2020_12_21_180807) do
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "email", null: false
+    t.text "email", null: false
     t.string "encrypted_password", limit: 128, null: false
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128, null: false

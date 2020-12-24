@@ -1,6 +1,6 @@
 class TestsController < ApplicationController
    before_action :require_login
-  before_action :set_test, only: [:show, :edit, :update, :destroy]
+   before_action :set_test, only: [:show, :edit, :update, :destroy]
 
   # GET /tests
   # GET /tests.json
@@ -25,18 +25,27 @@ class TestsController < ApplicationController
 
   # GET /tests/1/edit
   def edit
+     @test_questions = TestQuestion.all
   end
 
   # POST /tests
   # POST /tests.json
   def create
+
+     @test = @preTest.dup
+
+     respond_to do |format|
+       if @test.save
+         format.html { redirect_to @test, notice: 'Test was successfully created.' }
+         format.json { render :show, status: :created, location: @test }
+       else
+         format.html { render :new }
+       end
+     end
+
+=begin
     @test = Test.new(test_params)
     @test_questions = TestQuestion.all
-
-
-    @test_questions.each do |q|
-      q.test_id = @test.id
-   end
 
     respond_to do |format|
       if @test.save
@@ -46,7 +55,9 @@ class TestsController < ApplicationController
         format.html { render :new }
       end
     end
+=end
   end
+
 
   # PATCH/PUT /tests/1
   # PATCH/PUT /tests/1.json

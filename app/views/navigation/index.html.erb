@@ -38,10 +38,12 @@
         <br/>
         <%= link_to "Glossary", 'glossary' %>
         <br/><br/>
-        <%= button_to('Take Test', tests_path, params: {user_id: current_user.id, pre_test: true, questions_correct: 0 }, method: :post, class:'')%>
+        <%= button_to('Take PreTest', tests_path, method: :post, class:'', )%>
+         <%= button_to('Take PostTest', tests_path, params: {user_id: current_user.id, pre_test: false, questions_correct: 0 }, method: :post, class:'')%>
+
 
         <%#= button_to('Biopsy on Acetowhite', image_sessions_path, params: {user_id: current_user.id, image_id: @images[2].id, greenRight: 0, blueRight: 0, greenWrong: 0, blueWrong:0, colorlessWrong: 0, greenLeft: @images[1].green_areas.length(), blueLeft: @images[1].blue_areas.length()}, method: :post, class:'btn-block')%>
-        
+
       </div>
 
       <!--profile page-->

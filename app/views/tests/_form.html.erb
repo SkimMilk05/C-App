@@ -1,22 +1,32 @@
 <%= form_with(model: test, local: true) do |form| %>
-  <% if test.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(test.errors.count, "error") %> prohibited this test from being saved:</h2>
-
-      <ul>
-        <% test.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <h1>Test</h1>
-
-  hello outside of for loop. does this show?
-  <% @test_questions.each do |test_question| %>
-  hello this is a test question
+  <%if test.pre_test?%>
+  Welcome to your Pre-test! Here are directions:
+  <%else%>
+  Welcome to your Post-test! Here are directions:
   <%end%>
+  <br/> <br/>
+
+  <% @test_questions.each do |test_question| %>
+
+   <!-- display the question -->
+   <%= render 'test_questions/test_questions', test_question: test_question %>
+
+
+
+   <%= form.fields_for :test_answer do |answers_form| %>
+
+   <!-- answer choices and radio buttons-->
+   <div class="answers">
+      <% test_question.test_options.each do |test_option| %>
+        <%= answers_form.radio_button :letter, test_option.letter%>
+        <%= render 'test_options/test_options', test_option: test_option %>
+     <%end%>
+  </div>
+   <% end %> <!--end test answer--->
+   Current Answer: <%= test_question.test_answer.letter %>
+  <%end%> <!-- end question-->
 
   <div class="actions">
     <%= form.submit %>
