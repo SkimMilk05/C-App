@@ -58,6 +58,8 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    amoeba (3.1.0)
+      activerecord (>= 3.2.6)
     bcrypt (3.1.16)
     bindex (0.8.1)
     builder (3.2.4)
@@ -197,6 +199,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  amoeba (~> 3.1)
   byebug
   capybara (>= 2.15)
   clearance (~> 1.15.1)

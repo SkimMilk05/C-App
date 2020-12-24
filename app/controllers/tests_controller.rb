@@ -16,11 +16,8 @@ class TestsController < ApplicationController
 
   # GET /tests/new
   def new
-     @test = Test.new
+     @test = Test.find_by(id: 1).dup
 
-     @test_questions.each do |q|
-      q.test_id = @test.id
-    end
   end
 
   # GET /tests/1/edit
@@ -32,7 +29,7 @@ class TestsController < ApplicationController
   # POST /tests.json
   def create
 
-     @test = @preTest.dup
+     @test = Test.find_by(id: 1).dup
 
      respond_to do |format|
        if @test.save
