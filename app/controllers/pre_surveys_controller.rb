@@ -1,4 +1,5 @@
 class PreSurveysController < ApplicationController
+   before_action :require_login
   before_action :set_pre_survey, only: [:show, :edit, :update, :destroy]
 
   # GET /pre_surveys

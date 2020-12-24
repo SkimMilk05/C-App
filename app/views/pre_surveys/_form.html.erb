@@ -1,15 +1,5 @@
 <%= form_with(model: pre_survey, local: true) do |form| %>
-  <% if pre_survey.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(pre_survey.errors.count, "error") %> prohibited this pre_survey from being saved:</h2>
-
-      <ul>
-        <% pre_survey.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  
 
   <div class="actions">
     <%= form.submit %>
