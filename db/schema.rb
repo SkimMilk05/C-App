@@ -117,7 +117,6 @@ ActiveRecord::Schema.define(version: 2020_12_24_202200) do
   end
 
   create_table "test_answers", force: :cascade do |t|
-    t.bigint "test_question_id"
     t.bigint "test_id"
     t.text "letter"
     t.text "answer"
@@ -125,7 +124,6 @@ ActiveRecord::Schema.define(version: 2020_12_24_202200) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["test_id"], name: "index_test_answers_on_test_id"
-    t.index ["test_question_id"], name: "index_test_answers_on_test_question_id"
   end
 
   create_table "test_options", force: :cascade do |t|
@@ -139,14 +137,12 @@ ActiveRecord::Schema.define(version: 2020_12_24_202200) do
   end
 
   create_table "test_questions", force: :cascade do |t|
-    t.bigint "test_id"
     t.boolean "active"
     t.text "question"
     t.text "correct_ans"
     t.text "img_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["test_id"], name: "index_test_questions_on_test_id"
   end
 
   create_table "tests", force: :cascade do |t|

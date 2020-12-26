@@ -10,20 +10,17 @@
 me = User.create(email: 'sk9uth@virginia.edu', encrypted_password: 'Si0n0417!', confirmation_token: 'confirm', remember_token: 'dfda2049e7020aee21111e5dec506c590eb7f312', first_name: 'Sion', last_name: 'Kim')
 =end
 
-preTest = Test.create(user_id: 1, pre_test: true, questions_correct: 0)
 ##########################################################################################################
 #making test questions and options
 
 #Question 1
-Q1 = TestQuestion.create(active: true, question: "Which of the following statements is false:", correct_ans: 'C', test: preTest)
+Q1 = TestQuestion.create(active: true, question: "Which of the following statements is false:", correct_ans: 'C')
 Q1A = TestOption.create(test_question: Q1, letter: 'A', text: 'Normal squamous epithelium becomes dark brown with Lugol’s due to staining of the intracellular glycogen in superficial layers', img_url: nil)
 Q1B = TestOption.create(test_question: Q1, letter: 'B', text: 'Normal columnar epithelium may temporarily become white with application of acetic acid', img_url: nil)
 Q1C = TestOption.create(test_question: Q1, letter: 'C', text: 'The presence of columnar epithelium on the ectocervix is abnormal', img_url: nil)
 Q1D = TestOption.create(test_question: Q1, letter: 'D', text: 'Prominent, branching blood vessels can be normal', img_url: nil)
 Q1E = TestOption.create(test_question: Q1, letter: 'E', text: 'The cervix increases in size under the influence of estrogen', img_url: nil)
 
-#TESTER CODE
-A1 = TestAnswer.create(test: preTest, test_question: Q1, letter: 'A', correct: false)
 
 #Question 2
 Q2 = TestQuestion.create(active: true, question: "What is the most common error in colposcopy?", correct_ans: 'A')
@@ -132,24 +129,24 @@ Q26D = TestOption.create(test_question: Q26, letter: 'D', img_url: '26D')
 
 #Question 27
 Q27 = TestQuestion.create(active: true, question: 'Which of the following photos has normal blood vessels?', correct_ans: 'B')
-Q27A = TestOption.create(test_question: Q26, letter: 'A', img_url: '27A')
-Q27B = TestOption.create(test_question: Q26, letter: 'B', img_url: '27B')
-Q27C = TestOption.create(test_question: Q26, letter: 'C', img_url: '27C')
-Q27D = TestOption.create(test_question: Q26, letter: 'D', img_url: '27D')
+Q27A = TestOption.create(test_question: Q27, letter: 'A', img_url: '27A')
+Q27B = TestOption.create(test_question: Q27, letter: 'B', img_url: '27B')
+Q27C = TestOption.create(test_question: Q27, letter: 'C', img_url: '27C')
+Q27D = TestOption.create(test_question: Q27, letter: 'D', img_url: '27D')
 
 #Question 28
 Q28 = TestQuestion.create(active: true, question: 'Which of the following photos has findings consistent with HIGH GRADE dysplasia?', correct_ans: 'A')
-Q28A = TestOption.create(test_question: Q26, letter: 'A', img_url: '28A')
-Q28B = TestOption.create(test_question: Q26, letter: 'B', img_url: '28B')
-Q28C = TestOption.create(test_question: Q26, letter: 'C', img_url: '28C')
-Q28D = TestOption.create(test_question: Q26, letter: 'D', img_url: '28D')
+Q28A = TestOption.create(test_question: Q28, letter: 'A', img_url: '28A')
+Q28B = TestOption.create(test_question: Q28, letter: 'B', img_url: '28B')
+Q28C = TestOption.create(test_question: Q28, letter: 'C', img_url: '28C')
+Q28D = TestOption.create(test_question: Q28, letter: 'D', img_url: '28D')
 
 #Question 29
 Q29 = TestQuestion.create(active: true, question: 'Which of the following photos has findings consistent with LOW GRADE dysplasia?', correct_ans: 'B')
-Q29A = TestOption.create(test_question: Q26, letter: 'A', img_url: '29A')
-Q29B = TestOption.create(test_question: Q26, letter: 'B', img_url: '29B')
-Q29C = TestOption.create(test_question: Q26, letter: 'C', img_url: '29C')
-Q29D = TestOption.create(test_question: Q26, letter: 'D', img_url: '29D')
+Q29A = TestOption.create(test_question: Q29, letter: 'A', img_url: '29A')
+Q29B = TestOption.create(test_question: Q29, letter: 'B', img_url: '29B')
+Q29C = TestOption.create(test_question: Q29, letter: 'C', img_url: '29C')
+Q29D = TestOption.create(test_question: Q29, letter: 'D', img_url: '29D')
 
 #######Q 30-39 ARE OF THE SAME GROUP //MAYBE USE A FOR LOOP?
    #Question 30

@@ -1,7 +1,6 @@
 class CreateTestQuestions < ActiveRecord::Migration[6.0]
   def change
     create_table :test_questions do |t|
-      t.belongs_to :test, index: true
 
 
       t.boolean :active

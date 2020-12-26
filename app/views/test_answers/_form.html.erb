@@ -1,22 +1,5 @@
 <%= form_with(model: test_answer, local: true) do |form| %>
 
-<!-- display the question -->
-<%= render 'test_questions/test_questions', test_question: @test_question %>
-
-<!-- answer choices and radio buttons-->
-<div class="answers">
-   <% @test_options.each do |test_option| %>
-     <%= form.radio_button :letter, test_option.letter%>
-     <%= render 'test_options/test_options', test_option: test_option %>
-  <%end%>
-</div>
-
-<% if @test_answer.letter == nil %>
-   unanswered
-<%end%>
-<% if @test_answer.letter != nil %>
-   <%= form.label @test_answer.letter %>
-<%end%>
 
   <div class="actions">
     <%= form.submit %>

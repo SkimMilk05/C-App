@@ -38,7 +38,7 @@
         <br/>
         <%= link_to "Glossary", 'glossary' %>
         <br/><br/>
-        <%= button_to('Take PreTest', tests_path, method: :post, class:'', )%>
+        <%= button_to 'TakePreTest', new_test_path, method: :get %>
          <%= button_to('Take PostTest', tests_path, params: {user_id: current_user.id, pre_test: false, questions_correct: 0 }, method: :post, class:'')%>
 
          <%= button_to 'TakePreSurvey', new_pre_survey_path, method: :get %>

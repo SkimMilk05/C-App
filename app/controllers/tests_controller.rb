@@ -11,13 +11,14 @@ class TestsController < ApplicationController
   # GET /tests/1
   # GET /tests/1.json
   def show
-     @test_questions = @test.test_questions.all
+   @test_questions = TestQuestion.all
   end
 
   # GET /tests/new
   def new
-     @test = Test.find_by(id: 1).dup
-
+     @test_questions = TestQuestion.all
+     @test = Test.new
+     39.times {@test.test_answers.build}
   end
 
   # GET /tests/1/edit
@@ -29,18 +30,6 @@ class TestsController < ApplicationController
   # POST /tests.json
   def create
 
-     @test = Test.find_by(id: 1).dup
-
-     respond_to do |format|
-       if @test.save
-         format.html { redirect_to @test, notice: 'Test was successfully created.' }
-         format.json { render :show, status: :created, location: @test }
-       else
-         format.html { render :new }
-       end
-     end
-
-=begin
     @test = Test.new(test_params)
     @test_questions = TestQuestion.all
 
@@ -52,7 +41,7 @@ class TestsController < ApplicationController
         format.html { render :new }
       end
     end
-=end
+
   end
 
 
@@ -88,6 +77,6 @@ class TestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def test_params
-      params.permit(:user_id, :pre_test, :question_correct)
+      params.permit(:user_id, :pre_test, :questions_correct, test_answers_attributes: [:letter])
     end
 end
